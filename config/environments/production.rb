@@ -29,6 +29,7 @@ config.action_view.cache_template_loading            = true
 
 config.action_mailer.default_url_options = {:host => 'connect.tasawr.info'}
 
+=begin
 require 'smtp-tls'
 
 config.action_mailer.delivery_method = :smtp
@@ -41,6 +42,7 @@ ActionMailer::Base.smtp_settings = {
     :authentication => :plain,
     :enable_starttls_auto => true
 }
+=end
 
 
 if defined?(ActionController)
