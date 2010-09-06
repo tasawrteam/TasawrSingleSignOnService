@@ -1,0 +1,40 @@
+<div class="wideColumn">
+  <h1>Edit user information</h1>
+  <div class='space_10'></div>
+
+  <div class='form'>
+    <% form_for @user do |f| %>
+      <div class="textRow">
+        <label>Old password</label>
+        <span>:</span>
+        <input type='password' name='old_password'/>
+      </div>
+      <div class="textRow">
+        <label>Password</label>
+        <span>:</span>
+        <%= f.password_field :password %>
+      </div>
+      <div class="textRow">
+        <label>Re-enter Password</label>
+        <span>:</span>
+        <%= f.password_field :password_confirmation %>
+      </div>
+
+      <%= f.submit 'Change password' %>
+    <% end %>
+  </div>
+</div>
+
+<div class="narrowColumn">
+  <% if !logged_in? %>
+    <%= render :partial => 'login_and_registration_boxes' %>
+  <% else %>
+    <%= render :partial => 'users/account_settings_box' %>
+  <% end %>
+</div>
+
+<script type="text/javascript">
+  <% if !@user.errors.empty? %>
+    $('#errorMessages').dialog({modal: true});
+  <% end %>
+</script>

@@ -1,0 +1,63 @@
+body { text-align: left }
+
+input {direction:ltr }
+
+.header, .header .add, .header .logo, .topMenu, .menusWrapper ul li, .menusWrapper, .menusWrapper ul, .imagine, .wideColumn, .narrowColumn, .smallBox, .singInRow  { float: left; }
+
+.header .logo { padding-left: 5px; }
+
+.header .add { margin: 16px 0px 0px 0px }
+
+.wideColumn {margin-left:18px }
+
+.narrowColumn, .singInRow  {margin-left:10px }
+
+.smBoxTop,
+.smBoxBot,
+.smBoxMid { float:left }
+
+/*same*/
+.titleBgLeft,
+.titleBgMid,
+.titleBgRight,
+.n_smboxmid { float:left }
+
+.titleBgMid h1, h2 {float:left; text-align:left }
+
+/**/
+
+.textRow, 
+.textRow label, 
+.textRow2 label, 
+.textRow span, 
+.textRow2 span, 
+.textRow input, 
+.gobutton input, 
+.letbutton input, 
+.textRow2 input, .textRow2 p, .wideColumn p, .ch_top     { float:left }
+
+.textRow label, .textRow2 label { text-align:right} 
+
+.textRow span, .textRow2 span { text-align:left; }
+
+.gobutton .goBtn, .letbutton .letBtn {float:right }
+
+.subcrive p, .subcrive2 p {float:left; text-align:left }
+
+/**/
+.site_privacy ul li {  border-right:1px solid #98a7b0}
+
+.site_privacy ul li a { float: left }
+
+.footer, .content, .footerLinks, .footerLinks .part1, .footerLinks .part2 , .footerLinks .part3 , .footerLinks .partTasa, .siteRow, .site_copy { float: left; }
+
+.site_privacy  {float:right }
+
+.site_privacy ul, .site_privacy ul li, .copyRights, .copyRights img , .tasawr, .copyRights a { float:right }
+
+.copyRights a {border-left:1px solid #98a7b0 }
+
+.tasawr {text-align:right}
+
+.image_avater {float: left; margin-left:90px; *margin-left:50px }
+

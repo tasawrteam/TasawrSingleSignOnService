@@ -1,0 +1,20 @@
+var sessionId = '<%= u cookies[request.session_options[:key]] %>';
+var sessionKey = '<%= request.session_options[:key] %>';
+
+var TasawrAuth = {
+  init: function(options) {
+    <% if logged_in? %>
+      if (options['ifLoggedIn'] == null) {
+        alert('you havent mentioned ifLoggedIn in your TasawrAuth.init({..})')
+      } else {
+        var url = options['ifLoggedIn'];
+        if (url.indexOf('?') != -1) {
+          url += '&sessionId=' + sessionId + '&sessionKey=' + sessionKey;
+        } else {
+          url += '?sessionId=' + sessionId + '&sessionKey=' + sessionKey;
+        }
+        window.location = url;
+      }
+    <% end %>
+  }
+}

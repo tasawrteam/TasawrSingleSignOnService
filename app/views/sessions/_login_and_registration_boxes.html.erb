@@ -1,0 +1,107 @@
+<div class="smallBox">
+  <div class="smBoxTop">
+    <div class="titleBgLeft"></div>
+    <div class="titleBgMid">
+      <h1>SIGN IN </h1>
+    </div>
+    <div class="titleBgRight"></div>
+  </div>
+
+  <div class="smBoxMid">
+    <div class="n_smboxmid">
+      <% form_tag session_path do -%>
+        <div class="singInRow">
+          <div class="textRow" align="center">
+            <a href="#"><img src="/images/facebook.jpg" alt="" border="0"/></a>
+          </div>
+          <div class="textRow">
+            <label>Email ID</label>
+            <span>:</span>
+            <%= text_field_tag 'email', @email %>
+          </div>
+          <div class="textRow">
+            <label>Password</label>
+            <span>:</span>
+            <%= password_field_tag 'password', nil %>
+          </div>
+          <div class=" gobutton">
+            <input class="goBtn" name="" type="submit" value="Go!"/>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="smBoxBot"></div>
+  </div>
+</div>
+
+<div class="smallBox mtop">
+  <div class="smBoxTop">
+    <div class="titleBgLeft"></div>
+    <div class="titleBgMid">
+      <h1>REGISTER</h1>
+    </div>
+    <div class="titleBgRight"></div>
+  </div>
+
+  <div class="smBoxMid">
+    <div class="n_smboxmid">
+      <div class="singInRow">
+        <div id='errorMessages' title='Error messages'>
+          <%= error_messages_for :user %>
+        </div>
+        <% form_for :user, :url => users_path do |f| -%>
+          <div class="textRow">
+            <label>Email ID</label>
+            <span>:</span>
+            <%= f.text_field :email %>
+          </div>
+          <div class="textRow">
+            <label>Password</label>
+            <span>:</span>
+            <%= f.password_field :password %>
+          </div>
+          <div class="textRow">
+            <label>Re-enter Password</label>
+            <span>:</span>
+            <%= f.password_field :password_confirmation %>
+          </div>
+          <div class="textRow">
+            <label>Birthday</label>
+            <span>:</span>
+            <%= f.text_field :birthday %>
+          </div>
+          <div class="textRow">
+            <label>Mobile</label>
+            <span>:</span>
+            <%= f.text_field :mobile %>
+          </div>
+
+          <div class="textRow2">
+            <label>Gender</label>
+            <span>:</span>
+            <%= f.radio_button :gender, 'male' %>
+
+            <p>Male</p>
+            <%= f.radio_button :gender, 'female' %>
+
+            <p>Female</p>
+          </div>
+
+          <div class="textRow2 clear ">
+            <label>Agreement</label>
+            <span>:</span>
+            <input name="" type="checkbox" value=""/>
+
+            <div class="ch_top">I agree to the
+              <a href="#">Terms of Service</a></div>
+          </div>
+
+          <div class="letbutton">
+            <input class="letBtn" name="" type="submit" value="Let Me in !!"/>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="smBoxBot"></div>
+  </div>
+</div>

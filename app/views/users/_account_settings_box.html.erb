@@ -1,0 +1,26 @@
+<div class="smallBox">
+  <div class="smBoxTop">
+    <div class="titleBgLeft"></div>
+    <div class="titleBgMid">
+      <h1>Account settings</h1>
+    </div>
+    <div class="titleBgRight"></div>
+  </div>
+
+  <div class="smBoxMid">
+    <div class="n_smboxmid">
+      <ul>
+        <li>
+          <%= link_to 'Login home', root_url %>
+        </li>
+        <li>
+          <%= link_to 'Change password', "#{edit_user_path(current_user.id)}#change_password" %>
+        </li>
+        <li>
+          <%= link_to 'Logout', logout_url %>
+        </li>
+      </ul>
+    </div>
+    <div class="smBoxBot"></div>
+  </div>
+</div>

@@ -1,0 +1,381 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.f_ltr {
+  float: left
+}
+
+.f_rtl {
+  float: right
+}
+
+.a_ltr {
+  text-align: left
+}
+
+.a_rtl {
+  text-align: right
+}
+
+.b {
+  border: 1px solid #f00
+}
+
+.clear {
+  clear: both
+}
+
+body {
+  font-family: 'Tahoma', 'Myriad Pro', 'Arial';
+  font-size: 11px;
+  background: #cbd5da url(/images/body_bg.jpg) repeat-x;
+  color: #353535;
+}
+
+a {
+  text-decoration: none;
+  color: #475c69;
+  outline: none
+}
+
+a:hover {
+  text-decoration: underline
+}
+
+a img {
+  border: none
+}
+
+ul li {
+  list-style: none
+}
+
+.wrapper {
+  width: 948px;
+  margin: 0 auto;
+}
+
+.header {
+  width: 948px; /*margin-top: 31px;*/
+  margin-bottom: 16px;
+}
+
+.header .add {
+  width: 716px;
+}
+
+.header .logo, .header .add {
+  display: inline
+}
+
+.header .logo {
+  width: 222px;
+  margin-top: 30px;
+}
+
+.imagine {
+  width: 948px;
+  background: url(/images/big_box.png) no-repeat;
+  *background: url(/images/big_box.gif) no-repeat;
+  height: 456px;
+  padding-top: 18px
+}
+
+.wideColumn {
+  width: 572px;
+  display: inline
+}
+
+.narrowColumn {
+  display: inline;
+  width: 326px;
+}
+
+.narrowColumn .titleBgMid {
+  width: 306px;
+  height: 30px;
+  background: url(/images/title_bg_mid.png) repeat-x;
+  *background: url(/images/title_bg_mid.gif) repeat-x;
+}
+
+.smallBox {
+  width: 326px; /*background:url(/images/white_small_mid_bg.png) repeat-y*/
+}
+
+.n_smboxmid {
+  width: 326px;
+  background: url(/images/white_small_mid_bg.png) repeat-y;
+  *background: url(/images/white_small_mid_bg.gif) repeat-y;
+}
+
+/**/
+.smBoxTop {
+  float: left;
+  width: 100%
+}
+
+.smBoxBot {
+  width: 326px;
+  height: 8px;
+  display: inline;
+  background: url(/images/white_small_bot_bg.png) top no-repeat;
+  *background: url(/images/white_small_bot_bg.gif) top no-repeat;
+}
+
+.titleBgLeft {
+  width: 10px;
+  height: 30px;
+  background: url(/images/title_bg_left.png) left no-repeat;
+  *background: url(/images/title_bg_left.gif) left no-repeat;
+}
+
+.titleBgRight {
+  width: 10px;
+  height: 30px;
+  background: url(/images/title_bg_right.png) left no-repeat;
+  *background: url(/images/title_bg_right.gif) left no-repeat;
+}
+
+.smBoxMid {
+  width: 326px;
+  display: inline
+}
+
+.mtop {
+  margin-top: 10px;
+  display: inline
+}
+
+.titleBgMid h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  color: #475c69;
+  padding-top: 8px
+}
+
+h2 {
+  font-family: 'Tahoma';
+  font-size: 14px;
+  font-weight: bold;
+  color: #000;
+  padding-top: 5px
+}
+
+.singInRow {
+  width: 306px;
+  margin-top: 10px;
+  display: inline
+}
+
+/**/
+
+.textRow {
+  width: 306px;
+  margin-bottom: 6px;
+  display: inline
+}
+
+.textRow label, .textRow2 label {
+  width: 95px;
+  padding-top: 4px
+}
+
+.textRow span, .textRow2 span {
+  width: 10px;
+  padding-top: 4px
+}
+
+.textRow input {
+  width: 170px;
+  padding: 3px 5px;
+  background: url(/images/inputBg.jpg) no-repeat;
+  height: 14px;
+  border: none;
+  font-size: 11px;
+}
+
+.textRow2 input {
+  width: 20px;
+  margin-top: 5px;
+  display: inline
+}
+
+.textRow2 p {
+  width: 45px;
+  padding-top: 5px;
+  display: inline
+}
+
+.gobutton .goBtn {
+  background: url(/images/go_btn.jpg) no-repeat;
+  width: 43px;
+  height: 23px;
+  border: none;
+  color: #FFFFFF;
+  cursor: pointer;
+  outline: none;
+  font-family: 'Tahoma';
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 5px;
+}
+
+.letbutton .letBtn {
+  background: url(/images/letmein_btn.jpg) no-repeat;
+  width: 101px;
+  height: 23px;
+  border: none;
+  color: #FFFFFF;
+  cursor: pointer;
+  outline: none;
+  font-family: 'Tahoma';
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 5px;
+  margin-top: 10px
+}
+
+.subcrive p {
+  width: 180px;
+}
+
+.subcrive2 p {
+  width: 450px
+}
+
+h1 {
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  color: #49545a
+}
+
+.wideColumn p {
+  width: 100%;
+  margin-top: 10px;
+  display: inline
+}
+
+/**/
+
+.footer, .content {
+  width: 948px;
+  margin-top: 10px;
+  display: inline;
+  float:
+}
+
+.footer {
+  padding-bottom: 50px;
+  color: #586f7c
+}
+
+.footerLinks, .footerLinks a {
+  color: #586f7c
+}
+
+.footerLinks h4 {
+  font-size: 14px;
+  color: #49545a;
+  font-weight: bold
+}
+
+.footerLinks .part1 {
+  width: 135px;
+}
+
+.footerLinks .partTasa {
+  width: 615px;
+  color: #000
+}
+
+.footerLinks .part1 a {
+  width: 135px;
+  margin-top: 5px;
+}
+
+.copyRights {
+  width: 948px
+}
+
+.copyRights a {
+  width: 131px;
+  height: 28px;
+  padding: 10px /*margin-top:25px*/
+}
+
+.tasawr {
+  width: 250px;
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 12px
+}
+
+.footerLinks {
+  width: 948px;
+  margin-top: 10px;
+  display: inline
+}
+
+.siteRow {
+  width: 948px;
+  border-bottom: 1px solid #c9d3d9;
+  padding-bottom: 10px
+}
+
+.site_copy {
+  width: 400px;
+  font-size: 11px
+}
+
+.site_privacy, .site_privacy ul {
+  width: 548px
+}
+
+.site_privacy ul li {
+  padding: 0 10px;
+}
+
+.footerLinks a {
+  display: block
+}
+
+.ch_top {
+  margin-top: 5px;
+}
+
+.image_avater {
+  background: url(/images/tasawr_imagine.png) no-repeat;
+  *background: url(/images/tasawr_imagine.gif) no-repeat;
+  width: 376px;
+  height: 361px
+}
+
+.notice {
+  clear: both;
+  background: lightYellow;
+  padding: 5px;
+  margin-bottom: 5px;
+  font-size: 120%;
+  font-weight: bold;
+  border: 1px solid orange;
+}
+
+.n_smboxmid ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 10px;
+}
+
+.n_smboxmid ul li {
+  margin-bottom: 10px;
+  font-size: 110%;
+}
+
+.space_10 {
+  margin-top: 10px;
+}

@@ -1,0 +1,22 @@
+<div class="wideColumn">
+  <h1>Welcome to Tasawr. Imagine.</h1>
+
+  <p>Tasawr is a community portal catering to internet users throughout the
+    Middle East. Register now to be part of this vibrant community.</p>
+
+  <div align="center" class="image_avater"></div>
+</div>
+
+<div class="narrowColumn">
+  <% if !logged_in? %>
+    <%= render :partial => 'sessions/login_and_registration_boxes' %>
+  <% else %>
+    <%= render :partial => 'users/account_settings_box' %>
+  <% end %>
+</div>
+
+<script type="text/javascript">
+  <% if !@user.errors.empty? %>
+    $('#errorMessages').dialog({modal: true});
+  <% end %>
+</script>
