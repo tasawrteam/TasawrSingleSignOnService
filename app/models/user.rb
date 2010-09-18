@@ -72,7 +72,7 @@ class User < ActiveRecord::Base
       if existing_user
         existing_user.facebook_uid = fb_uid
         existing_user.facebook_sid = fb_session.auth_token
-        existing_user.facebook_connect_enabled = 1
+        existing_user.facebook_connect_enabled = true
         existing_user.save(false)
 
       else
@@ -82,7 +82,7 @@ class User < ActiveRecord::Base
             :facebook_uid => fb_uid,
             :facebook_sid => fb_session.session_key,
             :activated_at => Time.now,
-            :facebook_connect_enabled => 1
+            :facebook_connect_enabled => true
         }
 
         user = User.new(attributes)
