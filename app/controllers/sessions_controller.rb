@@ -36,23 +36,27 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    fb_enabled = current_user.facebook_uid.to_i > 0
+    if logged_in?
+      fb_enabled = current_user.facebook_uid.to_i > 0
 
-    if fb_enabled
-      session[FacebookConnectHelper::FACEBOOK_CONNECT_SESSION_ID] = nil
-      cookies.delete("#{FacebookConnectHelper::FACEBOOK_CONNECT_COOKIE_PREFIX}#{Facebooker.api_key}")
-      logout_killing_session!
-      store_location(params[:redirect_to])
-      flash[:notice] = "You have been logged out."
+      if fb_enabled
+        session[FacebookConnectHelper::FACEBOOK_CONNECT_SESSION_ID] = nil
+        cookies.delete("#{FacebookConnectHelper::FACEBOOK_CONNECT_COOKIE_PREFIX}#{Facebooker.api_key}")
+        logout_killing_session!
+        store_location(params[:redirect_to])
+        flash[:notice] = "You have been logged out."
 
-      @redirect_path = session[:return_to] || '/'
-      @redirect_path  = '/' if @redirect_path.match(/logout/)
-      session[:return_to] = nil
+        @redirect_path = session[:return_to] || '/'
+        @redirect_path  = '/' if @redirect_path.match(/logout/)
+        session[:return_to] = nil
+      else
+        logout_killing_session!
+        store_location(params[:redirect_to])
+        flash[:notice] = "You have been logged out."
+        redirect_back_or_default('/')
+      end
     else
-      logout_killing_session!
-      store_location(params[:redirect_to])
-      flash[:notice] = "You have been logged out."
-      redirect_back_or_default('/')
+      redirect_back_or_default('/')  
     end
   end
 
