@@ -27,7 +27,7 @@ development:
 production:
   api_key: 479a1b24877d9f9118df2fb5f64b9764
   secret_key: 005043edfbfb7a1f6f433dc8e7df838f
-  canvas_page_name: Tasawr Connect
+  canvas_page_name: 
   callback_url: http://connect.tasawr.info/
   set_asset_host_to_callback_url: false
   tunnel:
