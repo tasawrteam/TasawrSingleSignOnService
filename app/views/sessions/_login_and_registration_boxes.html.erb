@@ -11,9 +11,13 @@
     <div class="n_smboxmid">
       <% form_tag session_path do -%>
         <div class="singInRow">
-          <div class="textRow" align="center">
-            <a href="#"><img src="/images/facebook.jpg" alt="" border="0"/></a>
+          <div style="text-align: center; margin-bottom: 20px;">
+            <fb:login-button perms="email,publish_stream,create_event,rsvp_event"
+                             onlogin='window.location.reload()'>
+              Login with facebook
+            </fb:login-button>
           </div>
+
           <div class="textRow">
             <label>Email ID</label>
             <span>:</span>

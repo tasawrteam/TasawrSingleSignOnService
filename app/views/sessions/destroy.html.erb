@@ -1,0 +1,9 @@
+<script type="text/javascript" defer="defer">
+  $(function() {
+    FB.logout(function() {
+      window.location = "<%= @redirect_path %>";
+    })
+  });
+</script>
+
+<strong>Logging out from facebook</strong>

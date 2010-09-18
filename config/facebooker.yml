@@ -1,0 +1,34 @@
+# The api key, secret key, and canvas page name are required to get started
+# Tunnel configuration is only needed if you are going to use the facebooker:tunnel Rake tasks
+# Your callback url in Facebook should be set to http://public_host:public_port
+# If you're building a Facebook connect site, 
+#    change the value of set_asset_host_to_callback_url to false
+# To develop for the new profile design, add the following key..
+# api: new
+# remove the key or set it to anything else to use the old facebook design.
+# This should only be necessary until the final version of the new profile is released.
+
+development:
+  api_key: 9bae362db4e2dfa981b91169801ae062
+  secret_key: f1ef295e53cf2fca4d4130063715c1b1
+  canvas_page_name:
+  callback_url: http://servicedev1.net/
+  pretty_errors: true
+  set_asset_host_to_callback_url: true
+
+development:
+  api_key: 9bae362db4e2dfa981b91169801ae062
+  secret_key: f1ef295e53cf2fca4d4130063715c1b1
+  canvas_page_name:
+  callback_url: http://servicedev1.net/
+  pretty_errors: true
+  set_asset_host_to_callback_url: true
+
+production:
+  api_key: 479a1b24877d9f9118df2fb5f64b9764
+  secret_key: 005043edfbfb7a1f6f433dc8e7df838f
+  canvas_page_name: Tasawr Connect
+  callback_url: http://connect.tasawr.info/
+  set_asset_host_to_callback_url: false
+  tunnel:
+

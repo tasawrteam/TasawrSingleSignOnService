@@ -5,15 +5,15 @@ class User < ActiveRecord::Base
   include Authentication::ByPassword
   include Authentication::ByCookieToken
 
-  validates_format_of       :name,     :with => Authentication.name_regex,  :message => Authentication.bad_name_message, :allow_nil => true
-  validates_length_of       :name,     :maximum => 100
+  validates_format_of :name,     :with => Authentication.name_regex,  :message => Authentication.bad_name_message, :allow_nil => true
+  validates_length_of :name,     :maximum => 100
 
-  validates_presence_of     :email
-  validates_length_of       :email,    :within => 6..100 #r@a.wk
-  validates_uniqueness_of   :email
-  validates_format_of       :email,    :with => Authentication.email_regex, :message => Authentication.bad_email_message
+  validates_presence_of :email
+  validates_length_of :email,    :within => 6..100 #r@a.wk
+  validates_uniqueness_of :email
+  validates_format_of :email,    :with => Authentication.email_regex, :message => Authentication.bad_email_message
 
-  before_create :make_activation_code 
+  before_create :make_activation_code
 
   # HACK HACK HACK -- how to do attr_accessible from here?
   # prevents a user from submitting a crafted form that bypasses activation
@@ -59,10 +59,76 @@ class User < ActiveRecord::Base
     write_attribute :email, (value ? value.downcase : nil)
   end
 
+  def self.register_by_facebook_account(fb_session, fb_uid)
+    api = FacebookGraphApi.new(fb_session.auth_token, fb_uid)
+    user_attributes = api.find_user(fb_uid)
+    email = user_attributes['email'] || 'FAKE'
+    name = user_attributes['name'] || ''
+
+    if !email.blank? && !name.blank?
+      existing_user = User.find_by_email(email)
+      existing_user = User.find_by_facebook_uid(fb_uid) if existing_user.nil?
+
+      if existing_user
+        existing_user.facebook_uid = fb_uid
+        existing_user.facebook_sid = fb_session.auth_token
+        existing_user.facebook_connect_enabled = true
+        existing_user.save(false)
+
+      else
+        attributes = {
+            :name => name,
+            :email => find_or_build_unique_fake_email(email),
+            :facebook_uid => fb_uid,
+            :facebook_sid => fb_session.session_key,
+            :activated_at => Time.now,
+            :facebook_connect_enabled => true
+        }
+
+        user = User.new(attributes)
+        user.save(false)
+      end
+    else
+      # Do something else let's log him out from facebook
+      raise 'Durrr! you are one of those unlucky person for whom we haven\'t fixed this bug!
+            please let me know that i told you this crap!' + " data - #{user_attributes.inspect}"
+    end
+  end
+
+  def self.update_facebook_session(fb_uid, fb_session)
+    existing_user = User.find_by_facebook_uid(fb_uid)
+    existing_user.facebook_sid = fb_session.auth_token
+    existing_user.save(false)
+  end
+
+  private
+    def self.find_or_build_unique_user_name (name)
+      name = CGI.escape(name.parameterize.to_s)
+      if self.unique?(:login, name)
+        name
+      else
+        "#{name}-#{Time.now.to_i.to_s[6..10].to_i}"
+      end
+    end
+
+    def self.find_or_build_unique_fake_email(email)
+      if email.downcase != 'fake' && self.unique?(:email, email)
+        email
+      elsif email.downcase == 'fake'
+        "#{email}@#{Time.now.to_i.to_s[6..10].to_i}.com"
+      else
+        email
+      end
+    end
+
+    def self.unique?(field, value)
+      !User.send("find_by_#{field}", value)
+    end
+
   protected
-    
+
     def make_activation_code
-        self.activation_code = self.class.make_token
+      self.activation_code = self.class.make_token
     end
 
 

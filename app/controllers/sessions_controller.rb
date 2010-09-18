@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
   include AuthenticatedSystem
 
   layout 'basic'
+  before_filter :check_facebook_connect_session, :only => [:new]
 
   # render new.rhtml
   def new
@@ -35,10 +36,24 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    logout_killing_session!
-    store_location(params[:redirect_to])
-    flash[:notice] = "You have been logged out."
-    redirect_back_or_default('/')
+    fb_enabled = current_user.facebook_uid.to_i > 0
+
+    if fb_enabled
+      session[FacebookConnectHelper::FACEBOOK_CONNECT_SESSION_ID] = nil
+      cookies.delete("#{FacebookConnectHelper::FACEBOOK_CONNECT_COOKIE_PREFIX}#{Facebooker.api_key}")
+      logout_killing_session!
+      store_location(params[:redirect_to])
+      flash[:notice] = "You have been logged out."
+
+      @redirect_path = session[:return_to] || '/'
+      @redirect_path  = '/' if @redirect_path.match(/logout/)
+      session[:return_to] = nil
+    else
+      logout_killing_session!
+      store_location(params[:redirect_to])
+      flash[:notice] = "You have been logged out."
+      redirect_back_or_default('/')
+    end
   end
 
   def check
