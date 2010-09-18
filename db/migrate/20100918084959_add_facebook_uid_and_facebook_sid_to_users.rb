@@ -2,7 +2,7 @@ class AddFacebookUidAndFacebookSidToUsers < ActiveRecord::Migration
   def self.up
     add_column :users, :facebook_uid, :integer
     add_column :users, :facebook_sid, :integer
-    add_column :users, :facebook_connect_enabled, :boolean, :default => true
+    add_column :users, :facebook_connect_enabled, :integer, :default => 1
 
     add_index :users, [:facebook_uid]
   end
