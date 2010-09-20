@@ -11,12 +11,18 @@
     <div class="n_smboxmid">
       <% form_tag session_path do -%>
         <div class="singInRow">
-          <div style="text-align: center; margin-bottom: 20px;">
-            <fb:login-button perms="email,publish_stream,create_event,rsvp_event"
-                             onlogin='window.location.reload()'>
-              Login with facebook
-            </fb:login-button>
+          <div style='text-align: center'>
+            <div style="margin-left: 35px;;text-align: center; margin-bottom: 20px;float:left;">
+              <fb:login-button perms="email,publish_stream,create_event,rsvp_event"
+                               length='short' size='small'
+                               onlogin='window.location.reload()'/>
+            </div>
+
+            <div style="float:left; margin-left: 20px;">
+              <%= link_to image_tag('http://a0.twimg.com/images/dev/buttons/sign-in-with-twitter-d-sm.png'), connect_twitter_session_path %>
+            </div>
           </div>
+          <div class='clear'></div>
 
           <div class="textRow">
             <label>Email ID</label>

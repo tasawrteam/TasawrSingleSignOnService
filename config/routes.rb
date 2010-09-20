@@ -7,7 +7,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :users
 
-  map.resource :session
+  map.resource :session, :member => {:connect_twitter => :get, :oauth_twitter => :get}
 
   # The priority is based upon order of creation: first created -> highest priority.
 

@@ -59,6 +59,23 @@ class User < ActiveRecord::Base
     write_attribute :email, (value ? value.downcase : nil)
   end
 
+  def self.find_or_create_with_twitter_account(client)
+    twitter_user = client.info
+    twitter_uid = twitter_user['id']
+
+    user = User.find_by_twitter_uid(twitter_uid)
+    return user if user
+
+    user = User.new(
+        :name => twitter_user['name'],
+        :email => find_or_build_unique_fake_email('fake'),
+        :activated_at => Time.now,
+        :twitter_uid => twitter_uid.to_i,
+        :twitter_connect_enabled => true)
+    user.save(false)
+    return user
+  end
+
   def self.register_by_facebook_account(fb_session, fb_uid)
     api = FacebookGraphApi.new(fb_session.auth_token, fb_uid)
     user_attributes = api.find_user(fb_uid)

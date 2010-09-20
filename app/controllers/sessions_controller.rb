@@ -5,6 +5,7 @@ class SessionsController < ApplicationController
 
   layout 'basic'
   before_filter :check_facebook_connect_session, :only => [:new]
+  before_filter :check_twitter_connect_session, :only => [:connect_twitter, :oauth_twitter]
 
   # render new.rhtml
   def new
@@ -27,10 +28,10 @@ class SessionsController < ApplicationController
       flash[:notice] = "Logged in successfully"
     else
       note_failed_signin
-      @email       = params[:email]
+      @email = params[:email]
       @remember_me = params[:remember_me]
       @user = User.new
-      
+
       render :action => 'new'
     end
   end
@@ -47,7 +48,7 @@ class SessionsController < ApplicationController
         flash[:notice] = "You have been logged out."
 
         @redirect_path = session[:return_to] || '/'
-        @redirect_path  = '/' if @redirect_path.match(/logout/)
+        @redirect_path = '/' if @redirect_path.match(/logout/)
         session[:return_to] = nil
       else
         logout_killing_session!
@@ -56,12 +57,12 @@ class SessionsController < ApplicationController
         redirect_back_or_default('/')
       end
     else
-      redirect_back_or_default('/')  
+      redirect_back_or_default('/')
     end
   end
 
   def check
-    
+
   end
 
   def session_user
@@ -78,7 +79,44 @@ class SessionsController < ApplicationController
     end
   end
 
-protected
+  def connect_twitter
+    request_token = @client.authentication_request_token(
+        :oauth_callback => oauth_twitter_session_url)
+
+    session[:request_token] = request_token.token
+    session[:request_token_secret] = request_token.secret
+    redirect_to request_token.authorize_url.gsub('authorize', 'authenticate')
+  end
+
+  def oauth_twitter
+    if session[:token].nil? || session[:secret].nil?
+      @oauth_verifier = params[:oauth_verifier]
+      @access_token = @client.authorize(
+          session[:request_token], session[:request_token_secret],
+          :oauth_verifier => @oauth_verifier)
+
+      if (@result = @client.authorized?)
+        session[:token] = @access_token.token
+        session[:secret] = @access_token.secret
+
+        session[:request_token] = nil
+        session[:request_token_secret] = nil
+
+        flash[:notice] = "You've logged through your Twitter account."
+      else
+        flash[:notice] = "Failed to log in through your Twitter account."
+      end
+    end
+
+    if (session[:token] && !logged_in?)
+      self.current_user = User.find_or_create_with_twitter_account(@client)
+      redirect_back_or_default('/')
+    else
+      redirect_to root_url
+    end
+  end
+
+  protected
   # Track failed login attempts
   def note_failed_signin
     flash[:error] = "Couldn't log you in as '#{params[:email]}'"

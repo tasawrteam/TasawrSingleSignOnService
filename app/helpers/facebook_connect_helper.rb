@@ -37,7 +37,11 @@ module FacebookConnectHelper
   end
 
   def facebook_config
-    FACEBOOK_CONNECT[Rails.env.to_sym]
+    FACEBOOK_CONNECT[Rails.env.to_sym] || FACEBOOK_CONNECT[:else]
+  end
+
+  def twitter_config
+    TWITTER_CONNECT[Rails.env.to_sym] || TWITTER_CONNECT[:else]
   end
 
   def facebook_secret
@@ -50,6 +54,23 @@ module FacebookConnectHelper
 
   def facebook_api_key
     facebook_config[:apikey]
+  end
+
+  def twitter_consumer_key
+    twitter_config[:consumer_key]
+  end
+
+  def twitter_consumer_secret
+    twitter_config[:consumer_secret]
+  end
+
+  def check_twitter_connect_session
+    @client = TwitterOAuth::Client.new(
+        :consumer_key => twitter_consumer_key,
+        :consumer_secret => twitter_consumer_secret,
+        :token => session[:token],
+        :secret => session[:secret]
+    )
   end
 
   private
