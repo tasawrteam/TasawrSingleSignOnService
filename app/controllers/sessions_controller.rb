@@ -76,6 +76,12 @@ class SessionsController < ApplicationController
       user_attributes.delete('activation_code')
       user_attributes.delete('remember_token')
       f.json {render :json => user_attributes.to_json}
+      f.php do
+        text = "array("
+        text << user_attributes.collect{|k, v| "'#{k}' => \"#{v}\""}.join(', ')
+        text << ")"
+        render :text => text
+      end
     end
   end
 
