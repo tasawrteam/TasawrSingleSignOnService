@@ -1,0 +1,35 @@
+<div class="wideColumn">
+  <h1>Manage multiple hosted SSO sites!</h1>
+  <div class='space_10'></div>
+
+  <div class='ssoSiteTools'>
+    <%= link_to 'Add new site', new_sso_site_path %>
+  </div>
+  <div class='ssoSites'>
+    <table cellspacing="10">
+      <tbody>
+        
+        <% @sso_sites.each do |sso_site| %>
+          <tr>
+            <td>#<%= sso_site.id %></td>
+            <td><%= sso_site.domain %></td>
+            <td>
+              [<%= link_to 'Edit', edit_sso_site_path(sso_site) %>,
+              <%= link_to 'Delete', sso_site_url(sso_site),
+                          :confirm => 'Do you really want to remove this site?',
+                          :method => :delete %>]
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="narrowColumn">
+  <% if !logged_in? %>
+    <%= render :partial => 'sessions/login_and_registration_boxes' %>
+  <% else %>
+    <%= render :partial => 'users/account_settings_box' %>
+  <% end %>
+</div>

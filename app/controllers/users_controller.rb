@@ -2,7 +2,8 @@ class UsersController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
   include AuthenticatedSystem
   layout 'basic'
-  
+
+  before_filter :login_required, :only => [:edit, :update]
 
   # render new.rhtml
   def new
@@ -67,6 +68,73 @@ class UsersController < ApplicationController
     else
       flash[:notice] = 'Old password doesn\'t match!'
       redirect_to :back
+    end
+  end
+
+  def forgot_password
+    @login_sub_view = :forgot_password
+    @user = User.new
+    render :template => 'sessions/new'
+  end
+
+  def reset_password
+    @email = params[:email]
+    if @email
+      user = User.find_by_email(@email)
+      if user
+        reset_code = "#{Time.now.to_i}#{rand(1000)}"
+        if user.update_attribute(:reset_password_code, reset_code)
+          flash[:success] = 'Please check your email address, we have just sent password reset link.'
+          redirect_to root_url
+          return
+        else
+          flash[:notice] = 'Failed to reset your password!'
+        end
+        
+      else
+        flash[:notice] = 'Email address doesn\'t exist.'
+      end
+    else
+      flash[:notice] = 'Please enter your email address.'
+    end
+
+    redirect_to :back
+  end
+
+  def change_password
+    code = params[:code] || ''
+    if code.empty?
+      flash[:notice] = 'No reset password token was found!'
+    else
+      @user = User.find_by_reset_password_code(code)
+      if @user
+        flash[:success] = 'Set your new password!'
+        session[:approved_token] = code
+        session[:approved_user_id] = @user.id
+        return
+      else
+        flash[:notice] = 'No such user found!'
+        redirect_to root_url
+        return
+      end
+    end
+
+    redirect_to :back
+  end
+
+  def save_password
+    @user = User.find(session[:approved_user_id].to_i)
+    map = params[:user]
+    map[:reset_password_code] = nil
+    
+    if @user.update_attributes(map)
+      session[:approved_token] = nil
+      session[:approved_user_id] = nil
+      flash[:success] = 'We have stored your new password!'
+      redirect_to root_url
+    else
+      flash[:notice] = 'Failed to store your password!'
+      redirect_to change_password_url(session[:approved_token])
     end
   end
 end

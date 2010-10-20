@@ -3,7 +3,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <title>Tasawr Single Sign On Platform</title>
+  <title><%= sso_site_field(:site_title, 'Tasawr Single Sign On Platform') %></title>
 
   <%= javascript_include_tag 'jquery', 'jquery-ui' %>
   <%= stylesheet_link_tag 'style.css' %>
@@ -13,6 +13,12 @@
     <%= stylesheet_link_tag 'style_rtl.css' %>
   <% else %>
     <%= stylesheet_link_tag 'style_ltr.css' %>
+  <% end %>
+
+  <% if @sso_selected_site %>
+    <style type='text/css'>
+      <%= @sso_selected_site.theme_css %>
+    </style>
   <% end %>
 </head>
 
@@ -66,7 +72,8 @@
 
   <div class="footer">
     <div class="siteRow">
-      <div class="site_copy">© 2010 Tasawr Interactive. All Rights Reserved.
+      <div class="site_copy">
+        <%= sso_site_field :footer, '© 2010 Tasawr Interactive. All Rights Reserved.' %>
       </div>
       <div class="site_privacy">
         <ul>

@@ -1,47 +1,52 @@
 <div class="smallBox">
-  <div class="smBoxTop">
-    <div class="titleBgLeft"></div>
-    <div class="titleBgMid">
-      <h1>SIGN IN </h1>
+  <% if @login_sub_view.nil? %>
+    <div class="smBoxTop">
+      <div class="titleBgLeft"></div>
+      <div class="titleBgMid">
+        <h1>SIGN IN </h1>
+      </div>
+      <div class="titleBgRight"></div>
     </div>
-    <div class="titleBgRight"></div>
-  </div>
 
-  <div class="smBoxMid">
-    <div class="n_smboxmid">
-      <% form_tag session_path do -%>
-        <div class="singInRow">
-          <div style='text-align: center'>
-            <div style="margin-left: 35px;;text-align: center; margin-bottom: 20px;float:left;">
-              <fb:login-button perms="email,publish_stream,create_event,rsvp_event"
-                               length='short' size='small'
-                               onlogin='window.location.reload()'/>
+    <div class="smBoxMid">
+      <div class="n_smboxmid">
+        <% form_tag session_path do -%>
+          <div class="singInRow">
+            <div style='text-align: center'>
+              <div style="margin-left: 35px;;text-align: center; margin-bottom: 20px;float:left;">
+                <fb:login-button perms="email,publish_stream,create_event,rsvp_event"
+                                 length='short' size='small'
+                                 onlogin='window.location.reload()'/>
+              </div>
+
+              <div style="float:left; margin-left: 20px;">
+                <%= link_to image_tag('http://a0.twimg.com/images/dev/buttons/sign-in-with-twitter-d-sm.png'), connect_twitter_session_path %>
+              </div>
             </div>
+            <div class='clear'></div>
 
-            <div style="float:left; margin-left: 20px;">
-              <%= link_to image_tag('http://a0.twimg.com/images/dev/buttons/sign-in-with-twitter-d-sm.png'), connect_twitter_session_path %>
+            <div class="textRow">
+              <label>Email ID</label>
+              <span>:</span>
+              <%= text_field_tag 'email', @email %>
+            </div>
+            <div class="textRow">
+              <label>Password</label>
+              <span>:</span>
+              <%= password_field_tag 'password', nil %>
+            </div>
+            <div class="gobutton textRow">
+              <label><%= link_to 'Forgot password?', forgot_password_url %></label>
+              <input class="goBtn" name="" type="submit" value="Go!"/>
             </div>
           </div>
-          <div class='clear'></div>
-
-          <div class="textRow">
-            <label>Email ID</label>
-            <span>:</span>
-            <%= text_field_tag 'email', @email %>
-          </div>
-          <div class="textRow">
-            <label>Password</label>
-            <span>:</span>
-            <%= password_field_tag 'password', nil %>
-          </div>
-          <div class=" gobutton">
-            <input class="goBtn" name="" type="submit" value="Go!"/>
-          </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
+      <div class="smBoxBot"></div>
     </div>
-    <div class="smBoxBot"></div>
-  </div>
+  <% else %>
+    <%= render :partial => 'users/' + @login_sub_view.to_s %>
+  <% end %>
 </div>
 
 <div class="smallBox mtop">

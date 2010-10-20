@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
   attr_accessible :email, :name, :birthday, :gender, :mobile, :password,
-                  :password_confirmation
+                  :password_confirmation, :reset_password_code
 
   def old_password_matches?(old_password)
     encrypt(old_password) == self.crypted_password

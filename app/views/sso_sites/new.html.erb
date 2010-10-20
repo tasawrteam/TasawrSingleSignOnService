@@ -1,0 +1,73 @@
+<div class="wideColumn">
+  <h1>Manage multiple hosted SSO sites!</h1>
+  <div class='space_10'></div>
+
+  <div class='ssoSiteTools'>
+    <%= link_to 'Existing sites', sso_sites_path %>
+  </div>
+
+  <div class='form'>
+    <% form_for @sso_site do |f| %>
+      <div class=''>
+        <%= f.label :doamin %><br/>
+        <%= f.text_field :domain %>
+      </div>
+
+      <div class=''>
+        <%= f.label :title, 'Site title' %><br/>
+        <%= f.text_field :title %>
+      </div>
+
+      <div class=''>
+        <%= f.label :logo_url %><br/>
+        <%= f.text_field :logo_url %>
+      </div>
+
+      <table cellspacing="5">
+        <tbody>
+          <tr>
+            <td valign="top">
+              <div>
+                <%= ss_form_label :title, 'Site Welcome Title' %><br/>
+                <%= ss_form_field :text, :title %>
+              </div>
+
+              <div>
+                <%= ss_form_label :message, 'Site Welcome Message' %><br/>
+                <%= ss_form_field :text_area, :message, :style => 'width: 100%' %>
+              </div>
+
+              <div>
+                <%= ss_form_label :footer, 'Site Footer' %><br/>
+                <%= ss_form_field :text_area, :footer, :style => 'width: 100%' %>
+              </div>
+            </td>
+            <td>
+              <div class=''>
+                <%= f.label :theme_css %><br/>
+                <%= f.text_area :theme_css, :style => 'width: 300px; height: 200px;' %>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class='space_10'></div>
+      <div>
+        <% if @sso_site.new_record? %>
+          <%= f.submit 'Create' %>
+        <% else %>
+          <%= f.submit 'Update' %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="narrowColumn">
+  <% if !logged_in? %>
+    <%= render :partial => 'sessions/login_and_registration_boxes' %>
+  <% else %>
+    <%= render :partial => 'users/account_settings_box' %>
+  <% end %>
+</div>

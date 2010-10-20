@@ -1,10 +1,16 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :sso_sites
+
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.register '/register', :controller => 'users', :action => 'create'
   map.signup '/signup', :controller => 'users', :action => 'new'
   map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
-  
+  map.change_password '/change_password/:code', :controller => 'users', :action => 'change_password'
+  map.forgot_password '/forgot_password', :controller => 'users', :action => 'forgot_password'
+  map.reset_password '/reset_password', :controller => 'users', :action => 'reset_password'
+  map.save_password '/save_password', :controller => 'users', :action => 'save_password'
+
   map.resources :users
 
   map.resource :session, :member => {:connect_twitter => :get, :oauth_twitter => :get}

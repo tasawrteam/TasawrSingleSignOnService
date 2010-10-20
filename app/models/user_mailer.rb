@@ -12,6 +12,12 @@ class UserMailer < ActionMailer::Base
     @subject    += 'Your account has been activated!'
     @body[:url]  = "http://connect.tasawr.info/"
   end
+
+  def reset_password(user)
+    setup_email(user)
+    @subject    += 'Reset password'
+    @body[:url]  = "http://connect.tasawr.info/change_password/#{user.reset_password_code}"
+  end
   
   protected
     def setup_email(user)

@@ -9,4 +9,13 @@ class ApplicationController < ActionController::Base
 
   # Scrub sensitive parameters from your log
   filter_parameter_logging :fb_sig_friends, :password
+
+  include ApplicationHelper
+  include SsoSitesHelper
+
+  before_filter :override_cookie_host_by_request_host
+  before_filter :detect_sso_site
+  
 end
+
+
