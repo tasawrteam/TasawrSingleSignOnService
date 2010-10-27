@@ -1,0 +1,43 @@
+<div class="wideColumn">
+  <h1>Edit user information</h1>
+  <div class='space_10'></div>
+
+  <div class='form'>
+    <form action="{{user_path}}" method='post'>
+      <input name="_method" type="hidden" value="put" />
+      {% form_authenticity_token %}
+      <div class="textRow">
+        {% field_label 'user', 'old_password', 'Old password' %}
+        <span>:</span>
+        <input type="password" name="old_password" id="user_old_password"/>
+        
+      </div>
+      <div class="textRow">
+        {% field_label 'user', 'password', 'Password' %}
+        <span>:</span>
+        {% password_field 'user', 'password' %}
+      </div>
+      <div class="textRow">
+        {% field_label 'user', 'password_confirmation', 'Re-enter Password' %}
+        <span>:</span>
+        {% password_field 'user', 'password_confirmation' %}
+      </div>
+
+      <input type="submit" value="Change password"/>
+    </form>
+  </div>
+</div>
+
+<div class="narrowColumn">
+  {% if logged_in? != true %}
+    {% include 'login_and_registration_boxes' %}
+  {% else %}
+    {% include 'account_settings_box' %}
+  {% endif %}
+</div>
+
+<script type="text/javascript">
+  {% if @user.errors.length > 0 %}
+    $('#errorMessages').dialog({modal: true});
+  {% endif %}
+</script>

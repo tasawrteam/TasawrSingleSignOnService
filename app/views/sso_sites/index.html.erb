@@ -12,7 +12,7 @@
         <% @sso_sites.each do |sso_site| %>
           <tr>
             <td>#<%= sso_site.id %></td>
-            <td><%= sso_site.domain %></td>
+            <td><%= sso_site.domain %> (<%= sso_site.template_suit %>)</td>
             <td>
               [<%= link_to 'Edit', edit_sso_site_path(sso_site) %>,
               <%= link_to 'Delete', sso_site_url(sso_site),

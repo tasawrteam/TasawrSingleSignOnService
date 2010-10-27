@@ -13,6 +13,8 @@ class UsersController < ApplicationController
   def create
     logout_keeping_session!
     @user = User.new(params[:user])
+    @user.sso_site_id = @sso_selected_site.id
+    @user.host_token = @host_token
     success = @user && @user.save
     if success && @user.errors.empty?
       redirect_to root_url
@@ -27,7 +29,8 @@ class UsersController < ApplicationController
     logout_keeping_session!
     user = User.find_by_activation_code(params[:activation_code]) unless params[:activation_code].blank?
     case
-    when (!params[:activation_code].blank?) && user && !user.active?
+      when (!params[:activation_code].blank?) && user && !user.active?
+      user.host_token = @host_token
       user.activate!
       flash[:notice] = "Signup complete! Please sign in to continue."
       redirect_to root_url
@@ -43,10 +46,16 @@ class UsersController < ApplicationController
   def edit
     @user = current_user.reload
     store_location(params[:redirect_to])
+
+    ss_render_template(:try => 'edit_user', :or => 'users/edit',
+                       :assigns => {:user => @user,
+                                    :sso_site => @sso_selected_site})
   end
 
   def update
     @user = current_user.reload
+    @user.host_token = @host_token
+    
     old_password = params[:old_password]
     user_params = params[:user]
     user_params.delete(:id)
@@ -54,6 +63,7 @@ class UsersController < ApplicationController
     user_params.delete(:email)
     user_params.delete(:mobile)
     user_params.delete(:gender)
+    user_params.delete(:sso_site_id)
 
     if @user.old_password_matches?(old_password)
       if !user_params[:password].blank? && !user_params[:password_confirmation].blank? &&
@@ -69,6 +79,7 @@ class UsersController < ApplicationController
       flash[:notice] = 'Old password doesn\'t match!'
       redirect_to :back
     end
+
   end
 
   def forgot_password
@@ -82,6 +93,7 @@ class UsersController < ApplicationController
     if @email
       user = User.find_by_email(@email)
       if user
+        user.host_token = @host_token
         reset_code = "#{Time.now.to_i}#{rand(1000)}"
         if user.update_attribute(:reset_password_code, reset_code)
           flash[:success] = 'Please check your email address, we have just sent password reset link.'

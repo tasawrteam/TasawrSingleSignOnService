@@ -11,11 +11,15 @@ class SessionsController < ApplicationController
   def new
     @user = User.new
     store_location(params[:redirect_to])
+    
+    ss_render_template(:try => 'index', :or => 'users/new',
+                       :assigns => {:user => @user,
+                                    :sso_site => @sso_selected_site})
   end
 
   def create
     logout_keeping_session!
-    user = User.authenticate(params[:email], params[:password])
+    user = User.authenticate(@sso_selected_site, params[:email], params[:password])
     if user
       # Protects against session fixation attacks, causes request forgery
       # protection if user resubmits an earlier form using back

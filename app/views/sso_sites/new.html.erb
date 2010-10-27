@@ -12,16 +12,25 @@
         <%= f.label :doamin %><br/>
         <%= f.text_field :domain %>
       </div>
+      <div class='space_10'></div>
 
       <div class=''>
         <%= f.label :title, 'Site title' %><br/>
         <%= f.text_field :title %>
       </div>
+      <div class='space_10'></div>
 
       <div class=''>
         <%= f.label :logo_url %><br/>
         <%= f.text_field :logo_url %>
       </div>
+      <div class='space_10'></div>
+
+      <div class=''>
+        <%= f.label :template_suit %><br/>
+        <%= f.select :template_suit, @template_suits %>
+      </div>
+      <div class='space_10'></div>
 
       <table cellspacing="5">
         <tbody>
@@ -31,16 +40,19 @@
                 <%= ss_form_label :title, 'Site Welcome Title' %><br/>
                 <%= ss_form_field :text, :title %>
               </div>
+              <div class='space_10'></div>
 
               <div>
                 <%= ss_form_label :message, 'Site Welcome Message' %><br/>
                 <%= ss_form_field :text_area, :message, :style => 'width: 100%' %>
               </div>
+              <div class='space_10'></div>
 
               <div>
                 <%= ss_form_label :footer, 'Site Footer' %><br/>
                 <%= ss_form_field :text_area, :footer, :style => 'width: 100%' %>
               </div>
+              <div class='space_10'></div>
             </td>
             <td>
               <div class=''>

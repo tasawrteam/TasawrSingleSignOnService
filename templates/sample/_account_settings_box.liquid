@@ -1,0 +1,32 @@
+<div class="smallBox">
+  <div class="smBoxTop">
+    <div class="titleBgLeft"></div>
+    <div class="titleBgMid">
+      <h1>Account settings</h1>
+    </div>
+    <div class="titleBgRight"></div>
+  </div>
+
+  <div class="smBoxMid">
+    <div class="n_smboxmid">
+      <ul>
+        <li>
+          <a href="{{root_url}}">Login home</a>
+        </li>
+        <li>
+          <a href="{{edit_user_url}}#change_password">Change password</a>
+        </li>
+        <li>
+          <a href="{{logout_url}}">Logout</a>
+        </li>
+
+        {% if sso_sites_url %}
+          <li>
+            <a href="{{sso_sites_url}}">Site Management</a>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+    <div class="smBoxBot"></div>
+  </div>
+</div>

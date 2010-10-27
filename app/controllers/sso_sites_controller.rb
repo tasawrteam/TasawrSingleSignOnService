@@ -10,6 +10,7 @@ class SsoSitesController < ApplicationController
 
   def new
     @sso_site = SsoSite.new
+    load_template_suits
   end
 
   def create
@@ -36,6 +37,7 @@ class SsoSitesController < ApplicationController
 
   def edit
     @sso_site = SsoSite.find(params[:id])
+    load_template_suits
     render :action => :new
   end
 
@@ -49,4 +51,13 @@ class SsoSitesController < ApplicationController
       render :action => :new
     end
   end
+
+  private
+    def load_template_suits
+      @template_suits = {}
+
+      (Dir.glob(File.join(RAILS_ROOT, 'templates', '/*')) || []).each do |dir|
+        @template_suits[dir.split('/').last] = dir  
+      end
+    end
 end

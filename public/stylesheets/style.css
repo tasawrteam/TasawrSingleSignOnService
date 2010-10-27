@@ -88,6 +88,11 @@ ul li {
   display: inline
 }
 
+.wideColumn .form {
+  height: 400px;
+  overflow: auto;
+}
+
 .narrowColumn {
   display: inline;
   width: 326px;

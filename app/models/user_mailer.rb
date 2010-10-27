@@ -1,29 +1,29 @@
 class UserMailer < ActionMailer::Base
-  def signup_notification(user)
-    setup_email(user)
+  def signup_notification(host, user)
+    setup_email(host, user)
     @subject    += 'Please activate your new account'
   
-    @body[:url]  = "http://connect.tasawr.info/activate/#{user.activation_code}"
+    @body[:url]  = "http://#{host}/activate/#{user.activation_code}"
   
   end
   
-  def activation(user)
-    setup_email(user)
+  def activation(host, user)
+    setup_email(host, user)
     @subject    += 'Your account has been activated!'
-    @body[:url]  = "http://connect.tasawr.info/"
+    @body[:url]  = "http://#{host}/"
   end
 
-  def reset_password(user)
-    setup_email(user)
+  def reset_password(host, user)
+    setup_email(host, user)
     @subject    += 'Reset password'
-    @body[:url]  = "http://connect.tasawr.info/change_password/#{user.reset_password_code}"
+    @body[:url]  = "http://#{host}/change_password/#{user.reset_password_code}"
   end
   
   protected
-    def setup_email(user)
+    def setup_email(host, user)
       @recipients  = "#{user.email}"
       @from        = "support@tasawr.com"
-      @subject     = "http://connect.tasawr.info "
+      @subject     = "http://#{host} "
       @sent_on     = Time.now
       @body[:user] = user
     end

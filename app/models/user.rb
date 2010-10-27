@@ -1,6 +1,9 @@
 require 'digest/sha1'
 
 class User < ActiveRecord::Base
+
+  belongs_to :sso_site
+
   include Authentication
   include Authentication::ByPassword
   include Authentication::ByCookieToken
@@ -10,7 +13,7 @@ class User < ActiveRecord::Base
 
   validates_presence_of :email
   validates_length_of :email,    :within => 6..100 #r@a.wk
-  validates_uniqueness_of :email
+  validates_uniqueness_of :email, :scope => :sso_site_id
   validates_format_of :email,    :with => Authentication.email_regex, :message => Authentication.bad_email_message
 
   before_create :make_activation_code
@@ -19,7 +22,18 @@ class User < ActiveRecord::Base
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
   attr_accessible :email, :name, :birthday, :gender, :mobile, :password,
-                  :password_confirmation, :reset_password_code
+                  :password_confirmation, :reset_password_code, :host_token
+
+  liquid_methods :name, :email, :birthday, :gender, :mobile, :created_at,
+                 :facebook_uid, :twitter_uid, :sso_site, :errors
+
+  def host_token
+    @host_token
+  end
+
+  def host_token=(token)
+    @host_token = token
+  end
 
   def old_password_matches?(old_password)
     encrypt(old_password) == self.crypted_password
@@ -49,9 +63,9 @@ class User < ActiveRecord::Base
   # We really need a Dispatch Chain here or something.
   # This will also let us return a human error message.
   #
-  def self.authenticate(email, password)
+  def self.authenticate(sso_site, email, password)
     return nil if email.blank? || password.blank?
-    u = find :first, :conditions => ['email = ? and activated_at IS NOT NULL', email] # need to get the salt
+    u = find :first, :conditions => ['sso_site_id = ? AND email = ? and activated_at IS NOT NULL', sso_site.id, email] # need to get the salt
     u && u.authenticated?(password) ? u : nil
   end
 

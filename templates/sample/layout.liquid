@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>{% content_field 'site_title', 'Tasawr Single Sign On Platform' %}</title>
+
+  {% javascript_include_tag 'jquery', 'jquery-ui' %}
+  {% stylesheet_link_tag 'style.css' %}
+  {% stylesheet_link_tag 'jquery-ui-lightness/jquery.css' %}
+
+  {% if params[:locale].to_s == 'ar' %}
+    {% stylesheet_link_tag 'style_rtl.css' %}
+  {% else %}
+    {% stylesheet_link_tag 'style_ltr.css' %}
+  {% endif %}
+
+  {% if sso_site %}
+    <style type='text/css'>
+      {{ sso_site.theme_css }}
+    </style>
+  {% endif %}
+</head>
+
+<body>
+<div id="fb-root"></div>
+<script src="http://connect.facebook.net/en_US/all.js"></script>
+<script>
+  $(function() {
+    FB.init({appId: '{{facebooker_api_key}}', status: true, cookie: true, xfbml: true});
+    {% if logged_in? == true %}
+      FB.Event.subscribe('auth.sessionChange', function(response) {
+        if (response.session) {
+          var path = location.href;
+          window.location = path + (path.match(/\?/) ? '&' : '?') + "fskey=" +
+                            response.session.session_key + "&fuid=" +
+                            response.session.uid + '&fexpires=' +
+                            response.session.expires + '&fsecret=' +
+                            response.session.secret + '&fat=' +
+                            response.session.access_token
+        }
+      });
+    {% endif %}
+  });
+</script>
+
+<div class="wrapper">
+  <!--header start -->
+  <div class="header">
+    <div class="logo">
+      <a href="#"><img src="/images/logo.jpg" alt="Mobily"/></a>
+    </div>
+
+    <div class="add">
+      <a href="#"><img src="/images/top_banner.jpg" alt="gitex 2010"/></a>
+    </div>
+  </div>
+  <!--header end -->
+  <!--middle start -->
+
+  {% assign message = flash_notice %}
+  {% if message == null %}
+    {% assign message = flash_error %}
+  {% endif %}
+
+  {% if message == null %}
+    {% assign message = flash_success %}
+  {% endif %}
+
+  {% if message != null %}
+    <div class='notice'>
+      {{ message }}
+    </div>
+  {% endif %}
+
+  <div class='imagine'>
+    {{content_for_layout}}
+  </div>
+  <!--middle end -->
+  <!--footer start -->
+
+  <div class="footer">
+    <div class="siteRow">
+      <div class="site_copy">
+        {% content_field :footer, '© 2010 Tasawr Interactive. All Rights Reserved.' %}
+      </div>
+      <div class="site_privacy">
+        <ul>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Tell A Friend</a></li>
+          <li><a href="#"> Privacy Policy</a></li>
+          <li><a href="#">Terms & Conditions </a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footerLinks">
+
+      <div class="part1">
+        <h4>Travel</h4>
+        <a href="#">Hotel Bookings</a>
+        <a href="#">Deals</a>
+        <a href="#">Forum</a>
+        <a href="#">Hotel Owners</a>
+      </div>
+      <div class="part1">
+        <h4>Health</h4>
+        <a href="#">Health News</a>
+        <a href="#">Eating Healthy</a>
+        <a href="#">Wellness Blog</a>
+
+      </div>
+      <div class="part1">
+        <h4>Real Estate</h4>
+        <a href="#">Property Listings</a>
+        <a href="#">Blog</a>
+        <a href="#">Real Estate Fatwas</a>
+        <a href="#">Forum</a>
+        <a href="#">Q & A</a>
+      </div>
+      <div class="part1">
+        <h4>Games</h4>
+        <a href="#">Fantasy Football Cup</a>
+        <a href="#">SMS Cup</a>
+        <a href="#">Football Trivia</a>
+      </div>
+      <div class="part1">
+        <h4>Messaging</h4>
+        <a href="#">SMS Packages</a>
+        <a href="#">Greeting Cards</a>
+        <a href="#">MMS Service</a>
+      </div>
+
+    </div>
+    <div class="copyRights">
+
+      <a href="#"><img src="/images/footer_logo.gif" alt=""/></a>
+
+      <div class="tasawr">www.tasawr.com</p>
+      </div>
+    </div>
+    <!--footer end -->
+
+
+  </div>
+</div>
+
+
+
+</body>
+</html>
