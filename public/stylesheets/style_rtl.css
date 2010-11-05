@@ -26,17 +26,17 @@ input, p {direction: rtl }
 
 /**/
 
-.textRow, 
-.textRow label, 
-.textRow2 label, 
-.textRow span, 
-.textRow2 span, 
-.textRow input, 
+.textRow,
+.textRow label,
+.textRow2 label,
+.textRow span,
+.textRow2 span,
+.textRow input,
 .gobutton input, 
-.letbutton input, 
+.letbutton input,
 .textRow2 input, .textRow2 p , .wideColumn p , .ch_top   { float: right }
 
-.textRow label, .textRow2 label { text-align: left} 
+.textRow label, .textRow2 label { text-align: left}
 
 .textRow span, .textRow2 span { text-align: right; }
 
@@ -60,3 +60,22 @@ input, p {direction: rtl }
 .tasawr {text-align: left}
 
 .image_avater {float: right; margin-right:90px; *margin-right:50px }
+
+/**/
+.topTab, .topTab ul, .wide_left_side, .narrow_right_side, .midCont, .smallBox_wide, .smBoxMid_wide, .n_smboxmid_wide, smBoxBot_wide, .bbc_sports, .likeDesc, .like, .likeRow, .likeDesc p, .likeDesc span, .topTab ul li, .smBoxBot_wide, .techCrunch, .techInner, .techRow, .tc, .tcDesc, .crunchTxt, .people, .techRow p, .mtop, .ad , .mleft10, .media_img, .mainwrap  {float: right }
+
+ .topTab ul li a, .topTab ul li a span, .big_side .titleBgMid { float:left }
+
+.topTab ul, .narrow_right_side, .tcDesc, .mleft10, .advertise_side, .com_brief_desc {margin-right:10px }
+
+.header, .header .add, .header .logo, .topMenu, .menusWrapper ul li, .menusWrapper, .menusWrapper ul, .imagine, .wideColumn, .narrowColumn, .smallBox , .singInRow  { float: right; }
+
+.header .logo { padding-right: 5px; }
+
+.header .add { margin: 10px 10px 0px 0px }
+
+.topMenu ul li.switch_lan { float: left }
+
+.menusWrapper ul li a { padding: 9px 6px 8px 20px; }
+
+.menusWrapper ul li.switch_lan a { padding-left: 10px }

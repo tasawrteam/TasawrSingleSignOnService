@@ -3,6 +3,9 @@
 
 class ApplicationController < ActionController::Base
   include FacebookConnectHelper
+  include ApplicationHelper
+  include SsoSitesHelper
+  include MultidomainCookieHelper
 
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
@@ -10,10 +13,7 @@ class ApplicationController < ActionController::Base
   # Scrub sensitive parameters from your log
   filter_parameter_logging :fb_sig_friends, :password
 
-  include ApplicationHelper
-  include SsoSitesHelper
-
-  before_filter :override_cookie_host_by_request_host
+  before_filter :set_cookie_domain
   before_filter :detect_sso_site
   
 end

@@ -28,19 +28,19 @@
 <script>
   $(function() {
     FB.init({appId: '<%= Facebooker.api_key %>', status: true, cookie: true, xfbml: true});
-    <% if !logged_in? %>
-      FB.Event.subscribe('auth.sessionChange', function(response) {
-        if (response.session) {
-          var path = location.href;
-          window.location = path + (path.match(/\?/) ? '&' : '?') + "fskey=" +
-                            response.session.session_key + "&fuid=" +
-                            response.session.uid + '&fexpires=' +
-                            response.session.expires + '&fsecret=' +
-                            response.session.secret + '&fat=' +
-                            response.session.access_token
-        }
-      });
-    <% end %>
+  <% if !logged_in? %>
+    FB.Event.subscribe('auth.sessionChange', function(response) {
+      if (response.session) {
+        var path = location.href;
+        window.location = path + (path.match(/\?/) ? '&' : '?') + "fskey=" +
+                          response.session.session_key + "&fuid=" +
+                          response.session.uid + '&fexpires=' +
+                          response.session.expires + '&fsecret=' +
+                          response.session.secret + '&fat=' +
+                          response.session.access_token
+      }
+    });
+  <% end %>
   });
 </script>
 
@@ -55,6 +55,39 @@
       <a href="#"><img src="/images/top_banner.jpg" alt="gitex 2010"/></a>
     </div>
   </div>
+
+  <div class="topTab">
+    <ul>
+      <li>
+        <a class="selTab" href="http://connect.tasawr.info/?locale=en"><span><img src="/images/home_ico.gif"/></span></a>
+      </li>
+      <li><a href="http://tasawr.net/?locale=eng"><span>News</span></a></li>
+      <li><a href="http://hotel.tasawr.info/?lan=en"><span>Hotel</span></a></li>
+      <li>
+        <a href="http://carrental.tasawr.info/?lan=en"><span>Car Rental</span></a>
+      </li>
+      <li>
+        <a href="http://realestate.tasawr.info/?lan=en"><span>Real Estate</span></a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="topMenu">
+    <div class="menusWrapper">
+      <ul>
+        <li>
+          <a class="selMenu" href="http://connect.tasawr.info/?locale=en">Home</a>
+        </li>
+
+        <li class="switch_lan">
+
+          <a onclick="return true;" class="" href="/welcome?lan=ar">العربية</a>
+
+        </li>
+      </ul>
+    </div>
+  </div>
+
   <!--header end -->
   <!--middle start -->
   <% message = flash[:notice] || flash[:error] || flash[:success] %>
@@ -134,7 +167,6 @@
 
   </div>
 </div>
-
 
 
 </body>
