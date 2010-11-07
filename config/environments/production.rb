@@ -27,7 +27,7 @@ config.action_view.cache_template_loading            = true
 # Enable threaded mode
 # config.threadsafe!
 
-config.action_mailer.default_url_options = {:host => 'connect.tasawr.info'}
+config.action_mailer.default_url_options = {:host => 'connect.tasawr.net'}
 
 =begin
 require 'smtp-tls'
@@ -49,6 +49,6 @@ if defined?(ActionController)
   ActionController::Base.session = {
     :key         => '_tasawr_sso_session',
     :secret      => 'f11cf195514c9f70d208c7860c97b77b2f2fa19cc1b7291d00e26c89530a75077146bc9f0ec4076af5c5fe9b74ec1a9a3de6158a1840712d801103022417cf67',
-    :domain      => '.tasawr.info'
+    :domain      => '.tasawr.net'
   }
 end
