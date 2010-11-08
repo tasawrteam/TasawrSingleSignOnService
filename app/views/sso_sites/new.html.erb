@@ -26,9 +26,17 @@
       </div>
       <div class='space_10'></div>
 
+      <br/>
+      <div class=''>
+        <%= f.check_box :default %>
+        <%= f.label :default %>
+      </div>
+      <br/>
+      <div class='space_10'></div>
+
       <div class=''>
         <%= f.label :template_suit %><br/>
-        <%= f.select :template_suit, @template_suits %>
+        <%= f.select :template_suit, @template_suits, :include_blank => true %>
       </div>
       <div class='space_10'></div>
 

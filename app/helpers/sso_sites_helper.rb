@@ -58,9 +58,9 @@ module SsoSitesHelper
     assignments = options[:assigns] || {}
     assign_required_variables(assignments)
 
-    raise ':try and :or optiosn are required' if template_file.nil? || default_template.nil?
+    raise ':try and :or options are required' if template_file.nil? || default_template.nil?
 
-    if @template_suit
+    if @template_suit && !@template_suit.blank?
       render_with_liquid(template_file, assignments)
     else
       render :template => default_template
