@@ -6,6 +6,8 @@ module SsoSitesHelper
       @sso_selected_site = SsoSite.default.first
     end
 
+    puts "Selected site - #{@sso_selected_site.inspect}"
+    
     @url_prefix = request.env['SERVER_PROTOCOL'].match(/HTTP/i) ? 'http://' : 'https://'
     @host_token = SsoSite.add_active_host(request.host)
     @template_suit = @sso_selected_site.template_suit
