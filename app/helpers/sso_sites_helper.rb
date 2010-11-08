@@ -66,7 +66,7 @@ module SsoSitesHelper
 
     raise ':try and :or options are required' if template_file.nil? || default_template.nil?
 
-    if @template_suit && !@template_suit.blank?
+    if @template_suit && !@template_suit.blank? && File.exist?(File.join(@template_suit, "#{template_file}.liquid"))
       render_with_liquid(template_file, assignments)
     else
       render :template => default_template
