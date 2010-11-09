@@ -1,7 +1,7 @@
 class SsoSitesController < ApplicationController
   
-  include AuthenticatedSystem
   before_filter :login_required
+  before_filter :authorize
   layout 'basic'
   
   def index

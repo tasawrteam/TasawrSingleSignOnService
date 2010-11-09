@@ -77,3 +77,12 @@ input {direction:ltr }
 .menusWrapper ul li a { padding: 9px 20px 8px 6px; }
 
 .menusWrapper ul li.switch_lan a { padding-right: 10px }
+/*sumon edit*/
+
+.footerLinks .newsLink { width: 210px; }
+
+.footerLinks .newsLink a { width: 105px; margin-top: 5px; }
+
+.footerLinks .newsLink, .footerLinks .newsLink a  {  float:left}
+
+.copyRights div.tasawr a {border-right:none; margin-top:-10px; border-left: 0;}

@@ -214,3 +214,12 @@ h1 {font-size:20px; font-family:Arial, Helvetica, sans-serif; font-weight:bold; 
 .n_smboxmid ul li {
   padding: 5px;
 }
+
+/* My mod */
+.translations {
+  margin-left: 20px;
+}
+
+.translations textarea {
+  width: 100%;
+}

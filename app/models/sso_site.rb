@@ -30,7 +30,6 @@ class SsoSite < ActiveRecord::Base
     else
       SsoSite.all(:conditions => 'domain IS NOT NULL').each do |sso_site|
         hosts = sso_site.domain.split(/,/).collect(&:strip).compact
-        puts hosts.inspect
         hosts.each do |pt_host|
           if pt_host == host
             @@sso_site_maps[host] = sso_site

@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
-  include AuthenticatedSystem
   layout 'basic'
 
   before_filter :login_required, :only => [:edit, :update]

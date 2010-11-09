@@ -1,26 +1,26 @@
 <div class="wideColumn">
-  <h1>Edit user information</h1>
+  <h1><%= t('heading.EditUserInformation')%></h1>
   <div class='space_10'></div>
 
   <div class='form'>
     <% form_for @user do |f| %>
       <div class="textRow">
-        <label>Old password</label>
+        <label><%= t('form.OldPassword')%></label>
         <span>:</span>
         <input type='password' name='old_password'/>
       </div>
       <div class="textRow">
-        <label>Password</label>
+        <label><%= t('form.Password')%></label>
         <span>:</span>
         <%= f.password_field :password %>
       </div>
       <div class="textRow">
-        <label>Re-enter Password</label>
+        <label><%= t('form.ReenterPassword')%></label>
         <span>:</span>
         <%= f.password_field :password_confirmation %>
       </div>
 
-      <%= f.submit 'Change password' %>
+      <%= f.submit t('form.Changepassword') %>
     <% end %>
   </div>
 </div>

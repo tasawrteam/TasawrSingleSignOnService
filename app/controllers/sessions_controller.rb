@@ -54,10 +54,12 @@ class SessionsController < ApplicationController
         @redirect_path = session[:return_to] || '/'
         @redirect_path = '/' if @redirect_path.match(/logout/)
         session[:return_to] = nil
+        session[:l] = I18n.locale
       else
         logout_killing_session!
         store_location(params[:redirect_to])
         flash[:notice] = "You have been logged out."
+        session[:l] = I18n.locale
         redirect_back_or_default('/')
       end
     else

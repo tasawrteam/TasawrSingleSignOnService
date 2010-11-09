@@ -1,9 +1,8 @@
 <div class="wideColumn">
 
-  <h1><%= sso_site_field(:title, 'Welcome to Tasawr. Imagine.')%></h1>
+  <h1><%= t('home.welcome') %></h1>
 
-  <%= simple_format sso_site_field(:message, %{Tasawr is a community portal catering to internet users throughout the
-    Middle East. Register now to be part of this vibrant community.}) %>
+  <%= simple_format t('home.message') %>
 
   <div align="center" class="image_avater"></div>
 </div>

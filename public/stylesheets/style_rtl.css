@@ -79,3 +79,12 @@ input, p {direction: rtl }
 .menusWrapper ul li a { padding: 9px 6px 8px 20px; }
 
 .menusWrapper ul li.switch_lan a { padding-left: 10px }
+/*sumon edit*/
+
+.footerLinks .newsLink { width: 210px; }
+
+.footerLinks .newsLink a { width: 105px; margin-top: 5px; }
+
+.footerLinks .newsLink, .footerLinks .newsLink a  {  float: right}
+
+.copyRights div.tasawr a {border-right:none; margin-top:-10px; border-left: 0;}

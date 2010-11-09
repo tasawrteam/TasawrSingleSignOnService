@@ -2,10 +2,13 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
+
+  include AuthenticatedSystem
   include FacebookConnectHelper
   include ApplicationHelper
   include SsoSitesHelper
   include MultidomainCookieHelper
+  include LocaleHelper
 
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
@@ -15,6 +18,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :set_cookie_domain
   before_filter :detect_sso_site
+  before_filter :detect_locale
   
 end
 

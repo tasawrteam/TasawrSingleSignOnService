@@ -9,7 +9,7 @@
   <%= stylesheet_link_tag 'style.css' %>
   <%= stylesheet_link_tag 'jquery-ui-lightness/jquery.css' %>
 
-  <% if params[:locale].to_s == 'ar' %>
+  <% if I18n.locale.to_s == 'ar' %>
     <%= stylesheet_link_tag 'style_rtl.css' %>
   <% else %>
     <%= stylesheet_link_tag 'style_ltr.css' %>
@@ -59,15 +59,16 @@
   <div class="topTab">
     <ul>
       <li>
-        <a class="selTab" href="http://connect.tasawr.net/?locale=en"><span>Home</span></a>
+        <a class="selTab" href="http://connect.tasawr.net/?locale=en"><span><%= t('nav.home') %></span></a>
       </li>
-      <li><a href="http://news.tasawr.net/?locale=eng"><span>News</span></a></li>
-      <li><a href="http://hotel.tasawr.net/?lan=en"><span>Hotel</span></a></li>
+      <li><a href="http://news.tasawr.net/?locale=eng"><span><%= t('nav.news')%></span></a>
+      </li>
+      <li><a href="http://hotel.tasawr.net/?lan=en"><span><%= t('nav.hotel')%></span></a></li>
       <li>
-        <a href="http://carrental.tasawr.net/?lan=en"><span>Car Rental</span></a>
+        <a href="http://carrental.tasawr.net/?lan=en"><span><%= t('nav.CarRental') %></span></a>
       </li>
       <li>
-        <a href="http://realestate.tasawr.net/?lan=en"><span>Real Estate</span></a>
+        <a href="http://realestate.tasawr.net/?lan=en"><span><%= t('nav.RealEstate') %></span></a>
       </li>
     </ul>
   </div>
@@ -76,13 +77,15 @@
     <div class="menusWrapper">
       <ul>
         <li>
-          <a class="selMenu" href="http://connect.tasawr.net/?locale=en">Tasawr Connect</a>
+          <a class="selMenu" href="http://connect.tasawr.net/?l=en"><%= t('menu.TasawrConnect') %></a>
         </li>
 
         <li class="switch_lan">
-
-          <a onclick="return true;" class="" href="/welcome?lan=ar">العربية</a>
-
+          <% if I18n.locale.to_s == 'en' %>
+            <a onclick="return true;" class="" href="/?l=ar">العربية</a>
+          <% else %>
+            <a onclick="return true;" class="" href="/?l=en">English</a>
+          <% end %>
         </li>
       </ul>
     </div>
@@ -105,66 +108,62 @@
 
   <div class="footer">
     <div class="siteRow">
-      <div class="site_copy">
-        <%= sso_site_field :footer, '© 2010 Tasawr Interactive. All Rights Reserved.' %>
-      </div>
+      <div class="site_copy"><%= t('label.copyrights') %></div>
       <div class="site_privacy">
         <ul>
-          <li><a href="#">Contact Us</a></li>
-          <li><a href="#">Tell A Friend</a></li>
-          <li><a href="#"> Privacy Policy</a></li>
-          <li><a href="#">Terms & Conditions </a></li>
+          <li><a href="#"><%= t('nav.ContactUs') %></a></li>
+          <li><a href="#"><%= t('nav.TellAFriend') %></a></li>
+          <li><a href="#"><%= t('nav.PrivacyPolicy')%></a></li>
+          <li><a href="#"><%= t('nav.TermsConditions')%></a></li>
         </ul>
       </div>
     </div>
     <div class="footerLinks">
+      <div class="newsLink">
+        <h4><%= t('heading.news') %></h4>
+        <a href="http://news.tasawr.net/news"><%= t('nav.NewsHome') %></a>
+        <a href="http://news.tasawr.net/news/newslist/1/1"><%= t('nav.TopNews') %></a>
+        <a href="http://news.tasawr.net/news/newslist/2/1"><%= t('nav.Local')%></a>
+        <a href="http://news.tasawr.net/news/newslist/3/1"><%= t('nav.Culture')%></a>
+        <a href="http://news.tasawr.net/news/newslist/4/1"><%= t('nav.Sports')%></a>
+        <a href="http://news.tasawr.net/news/newslist/5/1"><%= t('nav.Technology')%></a>
+        <a href="http://news.tasawr.net/news/newslist/6/1"><%= t('nav.Finance') %></a>
+        <a href="http://news.tasawr.net/news/newslist/7/1"><%= t('nav.Money') %></a>
+        <a href="http://news.tasawr.net/news/newslist/8/1"><%= t('nav.Politics') %></a>
+        <a href="http://news.tasawr.net/news/newslist/10/1"><%= t('nav.Jobs') %></a>
+      </div>
+      <div class="part1">
+        <h4><%= t('heading.Hotel') %></h4>
+        <a href="http://hotel.tasawr.net/?lan=en"><%= t('nav.HotelHome') %></a>
+        <a href="http://hotel.tasawr.net/forums/?lan=en"><%= t('nav.Forum')%></a>
+        <a href="http://hotel.tasawr.net/hotels/new?lan=en"><%= t('nav.ListYourHotel')%></a>
+        <a href="http://hotel.tasawr.net/?lan=en#search_item"><%= t('nav.SearchHotel')%></a>
+      </div>
+      <div class="part1">
+        <h4><%= t('heading.CarRental') %></h4>
+        <a href="http://carrental.tasawr.net/?lan=en"><%= t('nav.CarHome')%></a>
+        <a href="http://carrental.tasawr.net/forums/?lan=en"><%= t('nav.Forum')%></a>
+        <a href="http://carrental.tasawr.net/hotels/new/?lan=en"><%= t('nav.ListYourCar')%></a>
+        <a href="http://carrental.tasawr.net/?lan=en#search_item"><%= t('nav.SearchCar')%></a>
+      </div>
+      <div class="part1">
+        <h4><%= t('heading.RealEstate')%></h4>
+        <a href="http://realestate.tasawr.net/?lan=en"><%= t('nav.RealEstateHome') %></a>
+        <a href="http://realestate.tasawr.net/forums/?lan=en"><%= t('nav.Forum')%></a>
 
-      <div class="part1">
-        <h4>Travel</h4>
-        <a href="#">Hotel Bookings</a>
-        <a href="#">Deals</a>
-        <a href="#">Forum</a>
-        <a href="#">Hotel Owners</a>
-      </div>
-      <div class="part1">
-        <h4>Health</h4>
-        <a href="#">Health News</a>
-        <a href="#">Eating Healthy</a>
-        <a href="#">Wellness Blog</a>
+        <a href="http://connect.tasawr.net/?redirect_to=http://localhost:3000/?lan=en&amp;profile=1"><%= t('nav.ListYourProperty')%></a>
 
+        <a href="http://realestate.tasawr.net/?lan=en#search_item"><%= t('nav.SearchProperty')%></a>
       </div>
-      <div class="part1">
-        <h4>Real Estate</h4>
-        <a href="#">Property Listings</a>
-        <a href="#">Blog</a>
-        <a href="#">Real Estate Fatwas</a>
-        <a href="#">Forum</a>
-        <a href="#">Q & A</a>
-      </div>
-      <div class="part1">
-        <h4>Games</h4>
-        <a href="#">Fantasy Football Cup</a>
-        <a href="#">SMS Cup</a>
-        <a href="#">Football Trivia</a>
-      </div>
-      <div class="part1">
-        <h4>Messaging</h4>
-        <a href="#">SMS Packages</a>
-        <a href="#">Greeting Cards</a>
-        <a href="#">MMS Service</a>
-      </div>
-
     </div>
     <div class="copyRights">
 
-      <a href="#"><img src="/images/footer_logo.gif" alt=""/></a>
+      <a href="#"><img alt="Tasawr Real Estate logo" src="/images/footer_logo.gif"></a>
 
-      <div class="tasawr">www.tasawr.com</p>
+      <div class="tasawr"><a href="http://www.tasawr.net">www.tasawr.net</a>
       </div>
     </div>
     <!--footer end -->
-
-
   </div>
 </div>
 
