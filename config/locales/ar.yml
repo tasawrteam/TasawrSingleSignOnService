@@ -63,7 +63,7 @@ ar:
     Male: "Male"
     Female: "Female"
     Agreement: "Agreement"
-    iAgree: "I agree to the <a href="
+    iAgree: "I agree to the <a href='javascript:void(0)'></a>"
     LetMeIn: "Let Me in !!"
   home:
     message: "Tasawr is a community portal catering to internet users throughout the Middle East. Register now to be part of this vibrant community."

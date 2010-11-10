@@ -84,13 +84,13 @@ h2 {font-family:'Tahoma'; font-size:14px; font-weight:bold; color:#000; padding-
 
 .textRow {width:306px; margin-bottom:6px; display:inline }
 
-.textRow label, .textRow2 label { width:95px; padding-top:4px }
+.textRow label, .textRow2 label { width:95px; padding-top:4px } 
 
-.textRow span, .textRow2 span { width:10px; padding-top:4px }
+.textRow span, .textRow2 span { width:10px; padding-top:4px } 
 
-.textRow input { width:170px; padding:3px 5px; background:url(/images/inputBg.jpg) no-repeat; height:14px; border:none; font-size:11px; }
+.textRow input { width:170px; padding:3px 5px; background:url(/images/inputBg.jpg) no-repeat; height:14px; border:none; font-size:11px; } 
 
-.textRow2 input { width:20px; margin-top:5px; display:inline }
+.textRow2 input { width:20px; margin-top:5px; display:inline } 
 
 .textRow2 p {width:45px; padding-top:5px; display:inline }
 
@@ -108,7 +108,7 @@ h1 {font-size:20px; font-family:Arial, Helvetica, sans-serif; font-weight:bold; 
 
 /**/
 
-.footer, .content { width: 980px; margin-top:10px; display:inline; float:  }
+.footer, .content { width: 980px; margin-top:10px; display:inline; }
 
 .footer { padding-bottom: 50px; color:#586f7c }
 
@@ -144,7 +144,7 @@ h1 {font-size:20px; font-family:Arial, Helvetica, sans-serif; font-weight:bold; 
 .ch_top {margin-top:5px; }
 
 
-.image_avater {background:url(/images/tasawr_imagine.png) no-repeat; *background:url(/images/tasawr_imagine.gif) no-repeat; width:376px; height:361px }
+.image_avater {background:url(/images/tasawr_imagine_2.png) no-repeat; /**background:url(/images/tasawr_imagine.gif) no-repeat;*/ width:376px; height:361px; margin-top:30px }
 
 
 /**/
@@ -155,7 +155,7 @@ h1 {font-size:20px; font-family:Arial, Helvetica, sans-serif; font-weight:bold; 
 .menusWrapper ul { background: url(/images/menu_mid.jpg) repeat-x; width: 964px; height: 36px; }
 
 .menusWrapper ul li a { float: left; font-weight: bold; font-size: 14px; color: #fff; font-family: Arial, Helvetica, sans-serif; }
-
+	
 .menusWrapper ul li a:hover, .menusWrapper ul li a.selMenu { text-decoration: none; color:#a8b7be }
 
 
@@ -204,8 +204,24 @@ h1 {font-size:20px; font-family:Arial, Helvetica, sans-serif; font-weight:bold; 
 	padding-right:12px;
 	padding-top:9px;
 	color:#fff;
-	text-decoration:none
+	text-decoration:none	
 }
+
+/*09 nov*/
+
+.secondRow {width:376px; margin-top:0px }
+
+.thirdRow {width:376px; margin-top:10px }
+
+.relestate {width:96px; height:96px; border:none; background:url(/images/realestate_icon.png) no-repeat; display:inline }
+
+.news_logo {width:96px; height:96px; border:none; background:url(/images/news_icon.png) no-repeat; display:inline }
+
+.hotel {width:96px; height:96px; border:none; background:url(/images/hotel_icon.png) no-repeat; display:inline }
+
+.car_rental {width:96px; height:96px; border:none; background:url(/images/car_icon.png) no-repeat; display:inline }
+
+.travel  {width:96px; height:96px; border:none; background:url(/images/news_icon.png) no-repeat; display:inline }
 
 .n_smboxmid ul {
   padding: 5px;

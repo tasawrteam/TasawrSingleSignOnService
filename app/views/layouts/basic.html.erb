@@ -100,7 +100,7 @@
     </div>
   <% end %>
 
-  <div class='imagine'>
+  <div class='imagine mtop'>
     <%= yield %>
   </div>
   <!--middle end -->
@@ -119,17 +119,20 @@
       </div>
     </div>
     <div class="footerLinks">
-      <div class="newsLink">
+      <div class="part1">
         <h4><%= t('heading.news') %></h4>
         <a href="http://news.tasawr.net/news"><%= t('nav.NewsHome') %></a>
-        <a href="http://news.tasawr.net/news/newslist/1/1"><%= t('nav.TopNews') %></a>
         <a href="http://news.tasawr.net/news/newslist/2/1"><%= t('nav.Local')%></a>
-        <a href="http://news.tasawr.net/news/newslist/3/1"><%= t('nav.Culture')%></a>
         <a href="http://news.tasawr.net/news/newslist/4/1"><%= t('nav.Sports')%></a>
-        <a href="http://news.tasawr.net/news/newslist/5/1"><%= t('nav.Technology')%></a>
         <a href="http://news.tasawr.net/news/newslist/6/1"><%= t('nav.Finance') %></a>
-        <a href="http://news.tasawr.net/news/newslist/7/1"><%= t('nav.Money') %></a>
         <a href="http://news.tasawr.net/news/newslist/8/1"><%= t('nav.Politics') %></a>
+      </div>
+      <div class='part1'>
+        <h4>&nbsp;</h4>
+        <a href="http://news.tasawr.net/news/newslist/1/1"><%= t('nav.TopNews') %></a>
+        <a href="http://news.tasawr.net/news/newslist/3/1"><%= t('nav.Culture')%></a>
+        <a href="http://news.tasawr.net/news/newslist/5/1"><%= t('nav.Technology')%></a>
+        <a href="http://news.tasawr.net/news/newslist/7/1"><%= t('nav.Money') %></a>
         <a href="http://news.tasawr.net/news/newslist/10/1"><%= t('nav.Jobs') %></a>
       </div>
       <div class="part1">

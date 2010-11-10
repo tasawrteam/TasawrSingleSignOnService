@@ -26,17 +26,17 @@ input {direction:ltr }
 
 /**/
 
-.textRow,
-.textRow label,
-.textRow2 label,
-.textRow span,
-.textRow2 span,
-.textRow input,
-.gobutton input,
-.letbutton input,
+.textRow, 
+.textRow label, 
+.textRow2 label, 
+.textRow span, 
+.textRow2 span, 
+.textRow input, 
+.gobutton input, 
+.letbutton input, 
 .textRow2 input, .textRow2 p, .wideColumn p, .ch_top     { float:left }
 
-.textRow label, .textRow2 label { text-align:right}
+.textRow label, .textRow2 label { text-align:right} 
 
 .textRow span, .textRow2 span { text-align:left; }
 
@@ -77,12 +77,18 @@ input {direction:ltr }
 .menusWrapper ul li a { padding: 9px 20px 8px 6px; }
 
 .menusWrapper ul li.switch_lan a { padding-right: 10px }
-/*sumon edit*/
 
-.footerLinks .newsLink { width: 210px; }
+/*09 nov*/
 
-.footerLinks .newsLink a { width: 105px; margin-top: 5px; }
+.travel, .hotel, .secondRow, .car_rental, .thirdRow, .news_logo, .relestate   { float:left }
 
-.footerLinks .newsLink, .footerLinks .newsLink a  {  float:left}
+.hotel {margin-left:70px }
+
+.car_rental {margin-left:35px }
+
+.news_logo {margin-left:0px }
+
+.relestate {margin-left:182px }
+
 
 .copyRights div.tasawr a {border-right:none; margin-top:-10px; border-left: 0;}
