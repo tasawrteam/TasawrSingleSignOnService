@@ -73,11 +73,11 @@ class User < ActiveRecord::Base
     write_attribute :email, (value ? value.downcase : nil)
   end
 
-  def self.find_or_create_with_twitter_account(client)
+  def self.find_or_create_with_twitter_account(sso_site, client)
     twitter_user = client.info
     twitter_uid = twitter_user['id']
 
-    user = User.find_by_twitter_uid(twitter_uid)
+    user = User.find_by_sso_site_id_and_twitter_uid(sso_site.id, twitter_uid)
     return user if user
 
     user = User.new(
@@ -85,20 +85,21 @@ class User < ActiveRecord::Base
         :email => find_or_build_unique_fake_email('fake'),
         :activated_at => Time.now,
         :twitter_uid => twitter_uid.to_i,
+        :sso_site_id => sso_site.id,
         :twitter_connect_enabled => true)
     user.save(false)
     return user
   end
 
-  def self.register_by_facebook_account(fb_session, fb_uid)
+  def self.register_by_facebook_account(sso_site, fb_session, fb_uid)
     api = FacebookGraphApi.new(fb_session.auth_token, fb_uid)
     user_attributes = api.find_user(fb_uid)
     email = user_attributes['email'] || 'FAKE'
     name = user_attributes['name'] || ''
 
     if !email.blank? && !name.blank?
-      existing_user = User.find_by_email(email)
-      existing_user = User.find_by_facebook_uid(fb_uid) if existing_user.nil?
+      existing_user = User.find_by_sso_site_id_and_email(sso_site.id, email)
+      existing_user = User.find_by_sso_site_id_and_facebook_uid(sso_site.id, fb_uid) if existing_user.nil?
 
       if existing_user
         existing_user.facebook_uid = fb_uid
@@ -113,6 +114,7 @@ class User < ActiveRecord::Base
             :facebook_uid => fb_uid,
             :facebook_sid => fb_session.session_key,
             :activated_at => Time.now,
+            :sso_site_id => sso_site.id,
             :facebook_connect_enabled => true
         }
 
@@ -126,8 +128,8 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.update_facebook_session(fb_uid, fb_session)
-    existing_user = User.find_by_facebook_uid(fb_uid)
+  def self.update_facebook_session(sso_site, fb_uid, fb_session)
+    existing_user = User.find_by_sso_site_id_and_facebook_uid(sso_site.id, fb_uid)
     existing_user.facebook_sid = fb_session.auth_token
     existing_user.save(false)
   end

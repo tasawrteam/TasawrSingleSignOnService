@@ -19,12 +19,12 @@ module FacebookConnectHelper
         # otherwise create new user and assign on session
 
         if !User.exists?(:facebook_uid => fb_uid)
-          User.register_by_facebook_account(fb_session, fb_uid)
+          User.register_by_facebook_account(@sso_selected_site, fb_session, fb_uid)
         else
-          User.update_facebook_session(fb_uid, fb_session)
+          User.update_facebook_session(@sso_selected_site, fb_uid, fb_session)
         end
 
-        self.current_user = User.find_by_facebook_uid(fb_uid)
+        self.current_user = User.find_by_sso_site_id_and_facebook_uid(@sso_selected_site.id, fb_uid)
         create_fb_connect_session(fb_session)
         flash[:notice] = 'You are logged in through your facebook account'
       end

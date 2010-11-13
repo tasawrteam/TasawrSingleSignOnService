@@ -90,7 +90,7 @@ class UsersController < ApplicationController
   def reset_password
     @email = params[:email]
     if @email
-      user = User.find_by_email(@email)
+      user = User.find_by_sso_site_id_and_email(@sso_selected_site.id, @email)
       if user
         user.host_token = @host_token
         reset_code = "#{Time.now.to_i}#{rand(1000)}"
@@ -117,7 +117,7 @@ class UsersController < ApplicationController
     if code.empty?
       flash[:notice] = 'No reset password token was found!'
     else
-      @user = User.find_by_reset_password_code(code)
+      @user = User.find_by_sso_site_id_and_reset_password_code(@sso_selected_site.id, code)
       if @user
         flash[:success] = 'Set your new password!'
         session[:approved_token] = code

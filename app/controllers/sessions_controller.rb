@@ -121,7 +121,7 @@ class SessionsController < ApplicationController
     end
 
     if (session[:token] && !logged_in?)
-      self.current_user = User.find_or_create_with_twitter_account(@client)
+      self.current_user = User.find_or_create_with_twitter_account(@sso_selected_site, @client)
       redirect_back_or_default('/')
     else
       redirect_to root_url
