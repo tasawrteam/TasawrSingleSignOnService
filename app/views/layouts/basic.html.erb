@@ -62,14 +62,14 @@
       <li>
         <a class="selTab" href="<%= root_url %>"><span><%= t('nav.home') %></span></a>
       </li>
-      <li><a href="http://news.tasawr.net/?locale=<%= I18n.locale.to_s == 'en' ? 'eng' : 'ara' %>"><span><%= t('nav.news')%></span></a>
+      <li><a href="http://news.tasawr<%= @domain_suffix %>/?locale=<%= I18n.locale.to_s == 'en' ? 'eng' : 'ara' %>"><span><%= t('nav.news')%></span></a>
       </li>
-      <li><a href="http://hotel.tasawr.net/?lan=<%= I18n.locale.to_s %>"><span><%= t('nav.hotel')%></span></a></li>
+      <li><a href="http://hotel.tasawr<%= @domain_suffix %>/?lan=<%= I18n.locale.to_s %>"><span><%= t('nav.hotel')%></span></a></li>
       <li>
-        <a href="http://carrental.tasawr.net/?lan=<%= I18n.locale.to_s %>"><span><%= t('nav.CarRental') %></span></a>
+        <a href="http://carrental.tasawr<%= @domain_suffix %>/?lan=<%= I18n.locale.to_s %>"><span><%= t('nav.CarRental') %></span></a>
       </li>
       <li>
-        <a href="http://realestate.tasawr.net/?lan=<%= I18n.locale.to_s %>"><span><%= t('nav.RealEstate') %></span></a>
+        <a href="http://realestate.tasawr<%= @domain_suffix %>/?lan=<%= I18n.locale.to_s %>"><span><%= t('nav.RealEstate') %></span></a>
       </li>
     </ul>
   </div>
@@ -78,7 +78,7 @@
     <div class="menusWrapper">
       <ul>
         <li>
-          <a class="selMenu" href="http://connect.tasawr.net/?l=en"><%= t('menu.TasawrConnect') %></a>
+          <a class="selMenu" href="http://connect.tasawr<%= @domain_suffix %>/?l=en"><%= t('menu.TasawrConnect') %></a>
         </li>
 
         <li class="switch_lan">
@@ -122,49 +122,49 @@
     <div class="footerLinks">
       <div class="part1">
         <h4><%= t('heading.news') %></h4>
-        <a href="http://news.tasawr.net/news?locale=<%= I18n.locale.to_s == 'en' ? 'eng' : 'ara' %>"><%= t('nav.NewsHome') %></a>
-        <a href="http://news.tasawr.net/news/newslist/2/1?locale=<%= I18n.locale.to_s == 'en' ? 'eng' : 'ara' %>"><%= t('nav.Local')%></a>
-        <a href="http://news.tasawr.net/news/newslist/4/1?locale=<%= I18n.locale.to_s == 'en' ? 'eng' : 'ara' %>"><%= t('nav.Sports')%></a>
-        <a href="http://news.tasawr.net/news/newslist/6/1?locale=<%= I18n.locale.to_s == 'en' ? 'eng' : 'ara' %>"><%= t('nav.Finance') %></a>
-        <a href="http://news.tasawr.net/news/newslist/8/1?locale=<%= I18n.locale.to_s == 'en' ? 'eng' : 'ara' %>"><%= t('nav.Politics') %></a>
+        <a href="http://news.tasawr<%= @domain_suffix %>/news?locale=<%= I18n.locale.to_s == 'en' ? 'eng' : 'ara' %>"><%= t('nav.NewsHome') %></a>
+        <a href="http://news.tasawr<%= @domain_suffix %>/news/newslist/2/1?locale=<%= I18n.locale.to_s == 'en' ? 'eng' : 'ara' %>"><%= t('nav.Local')%></a>
+        <a href="http://news.tasawr<%= @domain_suffix %>/news/newslist/4/1?locale=<%= I18n.locale.to_s == 'en' ? 'eng' : 'ara' %>"><%= t('nav.Sports')%></a>
+        <a href="http://news.tasawr<%= @domain_suffix %>/news/newslist/6/1?locale=<%= I18n.locale.to_s == 'en' ? 'eng' : 'ara' %>"><%= t('nav.Finance') %></a>
+        <a href="http://news.tasawr<%= @domain_suffix %>/news/newslist/8/1?locale=<%= I18n.locale.to_s == 'en' ? 'eng' : 'ara' %>"><%= t('nav.Politics') %></a>
       </div>
       <div class='part1'>
         <h4>&nbsp;</h4>
-        <a href="http://news.tasawr.net/news/newslist/1/1?locale=<%= I18n.locale.to_s == 'en' ? 'eng' : 'ara' %>"><%= t('nav.TopNews') %></a>
-        <a href="http://news.tasawr.net/news/newslist/3/1?locale=<%= I18n.locale.to_s == 'en' ? 'eng' : 'ara' %>"><%= t('nav.Culture')%></a>
-        <a href="http://news.tasawr.net/news/newslist/5/1?locale=<%= I18n.locale.to_s == 'en' ? 'eng' : 'ara' %>"><%= t('nav.Technology')%></a>
-        <a href="http://news.tasawr.net/news/newslist/7/1?locale=<%= I18n.locale.to_s == 'en' ? 'eng' : 'ara' %>"><%= t('nav.Money') %></a>
-        <a href="http://news.tasawr.net/news/newslist/10/1?locale=<%= I18n.locale.to_s == 'en' ? 'eng' : 'ara' %>"><%= t('nav.Jobs') %></a>
+        <a href="http://news.tasawr<%= @domain_suffix %>/news/newslist/1/1?locale=<%= I18n.locale.to_s == 'en' ? 'eng' : 'ara' %>"><%= t('nav.TopNews') %></a>
+        <a href="http://news.tasawr<%= @domain_suffix %>/news/newslist/3/1?locale=<%= I18n.locale.to_s == 'en' ? 'eng' : 'ara' %>"><%= t('nav.Culture')%></a>
+        <a href="http://news.tasawr<%= @domain_suffix %>/news/newslist/5/1?locale=<%= I18n.locale.to_s == 'en' ? 'eng' : 'ara' %>"><%= t('nav.Technology')%></a>
+        <a href="http://news.tasawr<%= @domain_suffix %>/news/newslist/7/1?locale=<%= I18n.locale.to_s == 'en' ? 'eng' : 'ara' %>"><%= t('nav.Money') %></a>
+        <a href="http://news.tasawr<%= @domain_suffix %>/news/newslist/10/1?locale=<%= I18n.locale.to_s == 'en' ? 'eng' : 'ara' %>"><%= t('nav.Jobs') %></a>
       </div>
       <div class="part1">
         <h4><%= t('heading.Hotel') %></h4>
-        <a href="http://hotel.tasawr.net/?lan=<%= I18n.locale.to_s %>"><%= t('nav.HotelHome') %></a>
-        <a href="http://hotel.tasawr.net/forums/?lan=<%= I18n.locale.to_s %>"><%= t('nav.Forum')%></a>
-        <a href="http://hotel.tasawr.net/hotels/new?lan=<%= I18n.locale.to_s %>"><%= t('nav.ListYourHotel')%></a>
-        <a href="http://hotel.tasawr.net/?lan=<%= I18n.locale.to_s %>#search_item"><%= t('nav.SearchHotel')%></a>
+        <a href="http://hotel.tasawr<%= @domain_suffix %>/?lan=<%= I18n.locale.to_s %>"><%= t('nav.HotelHome') %></a>
+        <a href="http://hotel.tasawr<%= @domain_suffix %>/forums/?lan=<%= I18n.locale.to_s %>"><%= t('nav.Forum')%></a>
+        <a href="http://hotel.tasawr<%= @domain_suffix %>/hotels/new?lan=<%= I18n.locale.to_s %>"><%= t('nav.ListYourHotel')%></a>
+        <a href="http://hotel.tasawr<%= @domain_suffix %>/?lan=<%= I18n.locale.to_s %>#search_item"><%= t('nav.SearchHotel')%></a>
       </div>
       <div class="part1">
         <h4><%= t('heading.CarRental') %></h4>
-        <a href="http://carrental.tasawr.net/?lan=<%= I18n.locale.to_s %>"><%= t('nav.CarHome')%></a>
-        <a href="http://carrental.tasawr.net/forums/?lan=<%= I18n.locale.to_s %>"><%= t('nav.Forum')%></a>
-        <a href="http://carrental.tasawr.net/hotels/new/?lan=<%= I18n.locale.to_s %>"><%= t('nav.ListYourCar')%></a>
-        <a href="http://carrental.tasawr.net/?lan=<%= I18n.locale.to_s %>#search_item"><%= t('nav.SearchCar')%></a>
+        <a href="http://carrental.tasawr<%= @domain_suffix %>/?lan=<%= I18n.locale.to_s %>"><%= t('nav.CarHome')%></a>
+        <a href="http://carrental.tasawr<%= @domain_suffix %>/forums/?lan=<%= I18n.locale.to_s %>"><%= t('nav.Forum')%></a>
+        <a href="http://carrental.tasawr<%= @domain_suffix %>/hotels/new/?lan=<%= I18n.locale.to_s %>"><%= t('nav.ListYourCar')%></a>
+        <a href="http://carrental.tasawr<%= @domain_suffix %>/?lan=<%= I18n.locale.to_s %>#search_item"><%= t('nav.SearchCar')%></a>
       </div>
       <div class="part1">
         <h4><%= t('heading.RealEstate')%></h4>
-        <a href="http://realestate.tasawr.net/?lan=<%= I18n.locale.to_s %>"><%= t('nav.RealEstateHome') %></a>
-        <a href="http://realestate.tasawr.net/forums/?lan=<%= I18n.locale.to_s %>"><%= t('nav.Forum')%></a>
+        <a href="http://realestate.tasawr<%= @domain_suffix %>/?lan=<%= I18n.locale.to_s %>"><%= t('nav.RealEstateHome') %></a>
+        <a href="http://realestate.tasawr<%= @domain_suffix %>/forums/?lan=<%= I18n.locale.to_s %>"><%= t('nav.Forum')%></a>
 
-        <a href="http://connect.tasawr.net/?redirect_to=<%= u("http://realestate.tasawr.net/?lan=#{I18n.locale.to_s}&profile=x") %>"><%= t('nav.ListYourProperty')%></a>
+        <a href="http://connect.tasawr<%= @domain_suffix %>/?redirect_to=<%= u("http://realestate.tasawr#{@domain_suffix}/?lan=#{I18n.locale.to_s}&profile=x") %>"><%= t('nav.ListYourProperty')%></a>
 
-        <a href="http://realestate.tasawr.net/?lan=<%= I18n.locale.to_s %>#search_item"><%= t('nav.SearchProperty')%></a>
+        <a href="http://realestate.tasawr<%= @domain_suffix %>/?lan=<%= I18n.locale.to_s %>#search_item"><%= t('nav.SearchProperty')%></a>
       </div>
     </div>
     <div class="copyRights">
 
       <a href="#"><img alt="Tasawr Real Estate logo" src="/images/footer_logo.gif"></a>
 
-      <div class="tasawr"><a href="http://www.tasawr.net">www.tasawr.net</a>
+      <div class="tasawr"><a href="http://www.tasawr<%= @domain_suffix %>">www.tasawr.net</a>
       </div>
     </div>
     <!--footer end -->

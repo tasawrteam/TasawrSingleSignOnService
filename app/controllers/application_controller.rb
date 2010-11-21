@@ -19,6 +19,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_cookie_domain
   before_filter :detect_sso_site
   before_filter :detect_locale
+  before_filter :detect_test_site
 
   def default_url_options(options = {})
     options = (options || {})
