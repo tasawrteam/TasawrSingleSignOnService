@@ -19,6 +19,14 @@ class ApplicationController < ActionController::Base
   before_filter :set_cookie_domain
   before_filter :detect_sso_site
   before_filter :detect_locale
+
+  def default_url_options(options = {})
+    options = (options || {})
+    if !options.keys.include?(:l)
+      options[:l] = I18n.locale.to_s
+    end
+    options
+  end
   
 end
 

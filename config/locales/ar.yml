@@ -63,7 +63,7 @@ ar:
     Male: "ذكر"
     Female: "أنثى"
     Agreement: "الموافقة"
-    iAgree: "أوافق على"
+    iAgree: "{{link}} أوافق على"
     LetMeIn: "التصريح بالدخول"
     ForgotPassword: "هل نسيت كلمة السر؟"
   home:

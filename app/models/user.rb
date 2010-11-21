@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   validates_length_of :email,    :within => 6..100 #r@a.wk
   validates_uniqueness_of :email, :scope => :sso_site_id
   validates_format_of :email,    :with => Authentication.email_regex, :message => Authentication.bad_email_message
+  validates_acceptance_of :terms_and_conditions, :on => :create
 
   before_create :make_activation_code
 
@@ -22,7 +23,8 @@ class User < ActiveRecord::Base
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
   attr_accessible :email, :name, :birthday, :gender, :mobile, :password,
-                  :password_confirmation, :reset_password_code, :host_token
+                  :password_confirmation, :reset_password_code, :host_token,
+                  :terms_and_conditions
 
   liquid_methods :name, :email, :birthday, :gender, :mobile, :created_at,
                  :facebook_uid, :twitter_uid, :sso_site, :errors
@@ -65,7 +67,7 @@ class User < ActiveRecord::Base
   #
   def self.authenticate(sso_site, email, password)
     return nil if email.blank? || password.blank?
-    u = find :first, :conditions => ['sso_site_id = ? AND email = ? and activated_at IS NOT NULL', sso_site.id, email] # need to get the salt
+    u = self.find_by_email_and_sso_site_id(email, sso_site)
     u && u.authenticated?(password) ? u : nil
   end
 
@@ -86,7 +88,8 @@ class User < ActiveRecord::Base
         :activated_at => Time.now,
         :twitter_uid => twitter_uid.to_i,
         :sso_site_id => sso_site.id,
-        :twitter_connect_enabled => true)
+        :twitter_connect_enabled => true,
+        :terms_and_conditions => true)
     user.save(false)
     return user
   end
@@ -115,7 +118,8 @@ class User < ActiveRecord::Base
             :facebook_sid => fb_session.session_key,
             :activated_at => Time.now,
             :sso_site_id => sso_site.id,
-            :facebook_connect_enabled => true
+            :facebook_connect_enabled => true,
+            :terms_and_conditions => true
         }
 
         user = User.new(attributes)

@@ -101,7 +101,7 @@ class UsersController < ApplicationController
         else
           flash[:notice] = 'Failed to reset your password!'
         end
-        
+
       else
         flash[:notice] = 'Email address doesn\'t exist.'
       end
@@ -137,7 +137,7 @@ class UsersController < ApplicationController
     @user = User.find(session[:approved_user_id].to_i)
     map = params[:user]
     map[:reset_password_code] = nil
-    
+
     if @user.update_attributes(map)
       session[:approved_token] = nil
       session[:approved_user_id] = nil

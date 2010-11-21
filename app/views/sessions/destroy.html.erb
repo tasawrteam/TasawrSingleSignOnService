@@ -1,5 +1,8 @@
 <script type="text/javascript" defer="defer">
   $(function() {
+    setTimeout(function() {
+      window.location.href = "<%= @redirect_path %>";
+    }, 5000);
     FB.logout(function() {
       window.location = "<%= @redirect_path %>";
     })

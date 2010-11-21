@@ -3,7 +3,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <title><%= sso_site_field(:site_title, 'Tasawr Single Sign On Platform') %></title>
+  <title><%= @defined_site_title ? "Tasawr SSO &raquo; #{@defined_site_title.humanize.capitalize}" : sso_site_field(:site_title, 'Tasawr Single Sign On Platform') %></title>
 
   <%= javascript_include_tag 'jquery', 'jquery-ui' %>
   <%= stylesheet_link_tag 'style.css' %>
@@ -60,7 +60,7 @@
   <div class="topTab">
     <ul>
       <li>
-        <a class="selTab" href="http://connect.tasawr.net/?locale=en"><span><%= t('nav.home') %></span></a>
+        <a class="selTab" href="<%= root_url %>"><span><%= t('nav.home') %></span></a>
       </li>
       <li><a href="http://news.tasawr.net/?locale=eng"><span><%= t('nav.news')%></span></a>
       </li>
@@ -114,8 +114,8 @@
         <ul>
           <li><a href="#"><%= t('nav.ContactUs') %></a></li>
           <li><a href="#"><%= t('nav.TellAFriend') %></a></li>
-          <li><a href="#"><%= t('nav.PrivacyPolicy')%></a></li>
-          <li><a href="#"><%= t('nav.TermsConditions')%></a></li>
+          <li><a href="#"><%= link_to t('nav.PrivacyPolicy'), static_page_url(:name => 'privacy_policy') %></a></li>
+          <li><%= link_to(t('nav.TermsConditions'), static_page_url(:name => 'terms_and_conditions')) %></li>
         </ul>
       </div>
     </div>

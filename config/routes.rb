@@ -10,6 +10,7 @@ ActionController::Routing::Routes.draw do |map|
   map.forgot_password '/forgot_password', :controller => 'users', :action => 'forgot_password'
   map.reset_password '/reset_password', :controller => 'users', :action => 'reset_password'
   map.save_password '/save_password', :controller => 'users', :action => 'save_password'
+  map.static_page '/static/:name', :controller => 'static_pages', :action => 'serve'
 
   map.resources :users
 

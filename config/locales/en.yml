@@ -63,7 +63,7 @@ en:
     Male: "Male"
     Female: "Female"
     Agreement: "Agreement"
-    iAgree: "I agree to the <a href='javascript:void(0)'></a>"
+    iAgree: "I agree to the %{link}"
     LetMeIn: "Let Me in !!"
     ForgotPassword: "Forgot password?"
   home:

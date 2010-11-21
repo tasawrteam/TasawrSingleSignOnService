@@ -105,9 +105,9 @@
           <div class="textRow2 clear ">
             <label><%= t('form.Agreement')%></label>
             <span>:</span>
-            <input name="" type="checkbox" value=""/>
+            <%= f.check_box :terms_and_conditions %>
 
-            <div class="ch_top"><%= t('form.iAgree')%></div>
+            <div class="ch_top"><%= t('form.iAgree', :link => link_to(t('nav.TermsConditions'), static_page_url(:name => 'terms_and_conditions'))) %></div>
           </div>
 
           <div class="letbutton">
