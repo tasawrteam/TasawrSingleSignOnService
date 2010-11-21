@@ -10,8 +10,15 @@ class SessionsController < ApplicationController
   # render new.rhtml
   def new
     @user = User.new
-    store_location(params[:redirect_to])
-    
+
+    if params[:redirect_to]
+      if !logged_in?
+        store_location(params[:redirect_to])
+      else
+        redirect_to params[:redirect_to]
+      end
+    end
+
     ss_render_template(:try => 'index', :or => 'users/new',
                        :assigns => {:user => @user,
                                     :sso_site => @sso_selected_site})
