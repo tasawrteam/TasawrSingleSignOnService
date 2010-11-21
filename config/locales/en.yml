@@ -65,6 +65,7 @@ en:
     Agreement: "Agreement"
     iAgree: "I agree to the <a href='javascript:void(0)'></a>"
     LetMeIn: "Let Me in !!"
+    ForgotPassword: "Forgot password?"
   home:
     message: "Tasawr is a community portal catering to internet users throughout the Middle East. Register now to be part of this vibrant community."
     welcome: "Welcome to Tasawr. Imagine."
