@@ -44,7 +44,10 @@ class UsersController < ApplicationController
 
   def edit
     @user = current_user.reload
-    store_location(params[:redirect_to])
+
+    if params[:redirect_to]
+      store_location(params[:redirect_to])
+    end
 
     ss_render_template(:try => 'edit_user', :or => 'users/edit',
                        :assigns => {:user => @user,
