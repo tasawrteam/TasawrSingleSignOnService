@@ -1,0 +1,26 @@
+.notice {
+  clear: both;
+  background: lightYellow;
+  padding: 5px;
+  position: relative;
+  top: 5px;
+  border: 1px solid orange;
+}
+
+.errorExplanation h2 {
+  margin-bottom: 10px;
+  color: #999;
+}
+
+.errorExplanation p {
+  margin-bottom: 10px;
+  color: #888;
+  border-bottom: 1px solid #ccc;
+}
+
+.errorExplanation ul li {
+  margin-bottom: 5px;
+  margin-left: 15px;
+  list-style-type: circle;
+  color: red;
+}
