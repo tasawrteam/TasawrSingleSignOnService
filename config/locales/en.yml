@@ -63,7 +63,7 @@ en:
     Male: "Male"
     Female: "Female"
     Agreement: "Agreement"
-    iAgree: "I agree to the %{link}"
+    iAgree: "I agree to the {{link}}"
     LetMeIn: "Let Me in !!"
     ForgotPassword: "Forgot password?"
   home:
