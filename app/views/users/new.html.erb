@@ -4,15 +4,39 @@
 
   <%= simple_format t('home.message') %>
 
-  <div align="center" class="image_avater">
-      <div class="secondRow">
-        <a class="hotel" href="http://hotel.tasawr<%= @domain_suffix %>?lan=<%= I18n.locale.to_s == 'en' ? 'en' : 'ar' %>"></a>
-        <a class="car_rental" href="http://carrental.tasawr<%= @domain_suffix %>?lan=<%= I18n.locale.to_s == 'en' ? 'en' : 'ar' %>"></a>
-      </div>
-      <div class="thirdRow">
-        <a class="news_logo" href="http://news.tasawr.net?locale=<%= I18n.locale.to_s == 'en' ? 'eng' : 'ara' %>"></a>
-        <a class="relestate" href="http://realestate.tasawr<%= @domain_suffix %>?lan=<%= I18n.locale.to_s == 'en' ? 'en' : 'ar' %>"></a>
-      </div>
+  <div align="center" class="">
+    <%
+      links = [
+          "http://news.tasawr.net?locale=#{I18n.locale.to_s == 'en' ? 'eng' : 'ara'}",
+          "http://realestate.tasawr#{@domain_suffix}?lan=#{I18n.locale.to_s == 'en' ? 'en' : 'ar'}",
+          "http://carrental.tasawr#{@domain_suffix}?lan=#{I18n.locale.to_s == 'en' ? 'en' : 'ar'}",
+          "http://hotel.tasawr#{@domain_suffix}?lan=#{I18n.locale.to_s == 'en' ? 'en' : 'ar'}"]
+      flash_vars = ""
+      links.each_with_index do |link, idx|
+        flash_vars << "link#{idx + 1}=#{u(link)}&"
+      end
+    %>
+
+    <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"
+            codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0"
+            width="460" height="370" id="connect_flash" align="middle">
+      <param name="allowScriptAccess" value="sameDomain"/>
+      <param name="allowFullScreen" value="false"/>
+      <param name='FlashVars' value="<%= flash_vars %>"/>
+      <param name="movie" value="/images/connect_flash.swf"/>
+      <param name="quality" value="high"/>
+      <param name="bgcolor" value="#ffffff"/>
+
+      <embed src="/images/connect_flash.swf" quality="high"
+             bgcolor="transparent" width="460" height="370" name="connect_flash"
+             align="middle" allowScriptAccess="sameDomain" allowFullScreen="false"
+             type="application/x-shockwave-flash"
+             flashvars="<%= flash_vars %>"
+             wmode="transparent"
+             pluginspage="http://www.macromedia.com/go/getflashplayer"/>
+    </object>
+
+
   </div>
 </div>
 
@@ -26,6 +50,6 @@
 
 <script type="text/javascript">
   <% if !@user.errors.empty? %>
-    $('#errorMessages').dialog({modal: true});
+  $('#errorMessages').dialog({modal: true});
   <% end %>
 </script>
