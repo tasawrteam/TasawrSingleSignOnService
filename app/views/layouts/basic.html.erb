@@ -82,10 +82,14 @@
         </li>
 
         <li class="switch_lan">
+          <%
+             current_url = request.url
+             current_url = current_url.downcase.gsub(/=(en|ar)/, "=#{I18n.locale.to_s == 'en' ? 'ar' : 'en'}")
+          %>
           <% if I18n.locale.to_s == 'en' %>
-            <a onclick="return true;" class="" href="/?l=ar">العربية</a>
+            <a onclick="return true;" class="" href="<%= current_url %>">العربية</a>
           <% else %>
-            <a onclick="return true;" class="" href="/?l=en">English</a>
+            <a onclick="return true;" class="" href="<%= current_url %>">English</a>
           <% end %>
         </li>
       </ul>
