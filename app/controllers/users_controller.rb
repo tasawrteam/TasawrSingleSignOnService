@@ -20,7 +20,11 @@ class UsersController < ApplicationController
       flash[:notice] = "Thanks for signing up!  We're sending you an email with your activation code."
     else
       flash[:error]  = "We couldn't set up that account, sorry.  Please try again, or contact an admin (link is above)."
-      render :action => :new
+      flash[:error] += "\n<ul><li>#{@user.errors.collect{|e| "#{e.first.to_s.humanize} #{e.last}"}.join('</li><li>')}</li></ul>"
+
+      ss_render_template(:try => 'index', :or => 'users/new',
+                         :assigns => {:user => @user,
+                                      :sso_site => @sso_selected_site})
     end
   end
 

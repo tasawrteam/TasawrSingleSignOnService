@@ -43,7 +43,9 @@ class SessionsController < ApplicationController
       @remember_me = params[:remember_me]
       @user = User.new
 
-      render :action => 'new'
+      ss_render_template(:try => 'index', :or => 'users/new',
+                       :assigns => {:user => @user,
+                                    :sso_site => @sso_selected_site})
     end
   end
 

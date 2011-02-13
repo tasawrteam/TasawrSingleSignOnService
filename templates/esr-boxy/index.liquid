@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+<head>
+  <title>Login</title>
+  <link
+      href="http://collab.esolutionsroad.net/public/assets/themes/goCollabEsolutionsRoad/stylesheets/dialog.css"
+      rel="Stylesheet" type="text/css"/>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <link rel="Shortcut Icon" href="http://collab.esolutionsroad.net/favicon.ico"
+        type="image/x-icon"/>
+
+</head>
+<body>
+<div id="dialog">
+
+  {% assign message = flash_notice %}
+  {% if message == null %}
+  {% assign message = flash_error %}
+  {% endif %}
+
+  {% if message == null %}
+  {% assign message = flash_success %}
+  {% endif %}
+
+  {% if message != null %}
+    <div class='notice'
+         style="background: pink; font-weight: bold; padding: 2px;">
+      {{ message }}
+    </div>
+    <br/>
+  {% endif %}
+
+  <div id="loginDialog">
+    <h1>Login</h1>
+
+    <form action="{{session_path}}" method="POST">
+      {% form_authenticity_token %}
+
+      <div id="loginUsernameDiv">
+        <label for="loginUsername">Email ID</label>
+        <input id="loginUsername" class="medium" type="text"
+               name="email" value=""/></div>
+      <div id="loginPasswordDiv">
+
+        <label for="loginPassword">Password</label>
+        <input id="loginPassword" class="medium" type="password"
+               name="password" value=""/></div>
+      <div class="clean"></div>
+
+      <div id="loginSubmit">
+        <span><a href='{{forgot_password_url}}'>Forgot password?</a></span> .
+        <span>(<a href='javascript:void(0)'
+                  onclick="document.getElementById('registrationDialog').style.display='block';document.getElementById('loginDialog').style.display='none';">Register</a>)</span> .
+        <button class="submit" type="submit" accesskey="s">Login</button>
+      </div>
+
+    </form>
+  </div>
+
+  <div id="registrationDialog" style="display:none">
+    <h1>Registration</h1>
+
+    <div class="singInRow">
+      <div id='errorMessages' title='Error messages'>
+        {% error_messages_for user %}
+      </div>
+      <form action="{{users_path}}" method="POST">
+        {% form_authenticity_token %}
+
+        <div class="textRow">
+          {% field_label 'user', 'email', 'Email ID' %}
+          {% text_field 'user', 'email' %}
+        </div>
+        <div class="textRow">
+          {% field_label 'user', 'password', 'Password' %}
+          {% password_field 'user', 'password' %}
+        </div>
+        <div class="textRow">
+          {% field_label 'user', 'password_confirmation', 'Re-enter Password' %}
+          {% password_field 'user', 'password_confirmation' %}
+        </div>
+        <div class="textRow">
+          {% field_label 'user', 'birthday', 'Birthday' %}
+          {% text_field 'user', 'birthday' %}
+        </div>
+        <div class="textRow">
+          {% field_label 'user', 'mobile', 'Mobile' %}
+          {% text_field 'user', 'mobile' %}
+        </div>
+
+        <div class="">
+          {% field_label 'user', 'gender', 'Gender' %}
+
+          {% radio_button 'user', 'gender', 'male' %} Male
+
+          {% radio_button 'user', 'gender', 'female' %} Female
+        </div>
+        <br/>
+
+        <div class="textRow2 clear ">
+          <label>Agreement</label>
+          <input name="" type="checkbox" value=""/>
+
+          <span class="ch_top">I agree to the
+            <a href="#">Terms of Service</a></span>
+        </div>
+        <div class="clear"></div>
+        <br/>
+
+        <div id="loginSubmit">
+          <span>(<a href='javascript:void(0)'
+                  onclick="document.getElementById('registrationDialog').style.display='none';document.getElementById('loginDialog').style.display='block';">Login</a>)</span> .
+          <input class="submit" name="" type="submit" value="Register"/>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>
+
+<style type="text/css">
+  #registrationDialog label {
+    display: block;
+  }
+
+  #registrationDialog input {
+    width: auto;
+  }
+</style>
+</body>
+</html>
