@@ -16,6 +16,7 @@ class UsersController < ApplicationController
     @user.host_token = @host_token
     success = @user && @user.save
     if success && @user.errors.empty?
+      user.activate!
       redirect_to root_url
       flash[:notice] = "Thanks for signing up!  We're sending you an email with your activation code."
     else
