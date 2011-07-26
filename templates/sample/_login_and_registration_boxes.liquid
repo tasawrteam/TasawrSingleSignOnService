@@ -13,8 +13,8 @@
         <form action="{{session_path}}" method="POST">
           {% form_authenticity_token %}
           <div class="singInRow">
-            <div style='text-align: center'>
-              <div style="margin-left: 35px;;text-align: center; margin-bottom: 20px;float:left;">
+            <div style='text-align: center; display: none'>
+              <div style="margin-left: 35px;;text-align: center; margin-bottom: 20px;float:left; ">
                 <fb:login-button perms="email,publish_stream,create_event,rsvp_event"
                                  length='short' size='small'
                                  onlogin='window.location.reload()'/>
