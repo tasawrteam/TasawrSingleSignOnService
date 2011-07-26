@@ -4,8 +4,8 @@ class SessionsController < ApplicationController
   include AuthenticatedSystem
 
   layout 'basic'
-  before_filter :check_facebook_connect_session, :only => [:new]
-  before_filter :check_twitter_connect_session, :only => [:connect_twitter, :oauth_twitter]
+  #before_filter :check_facebook_connect_session, :only => [:new]
+  #before_filter :check_twitter_connect_session, :only => [:connect_twitter, :oauth_twitter]
 
   # render new.rhtml
   def new
@@ -52,6 +52,10 @@ class SessionsController < ApplicationController
   def destroy
     if logged_in?
       fb_enabled = current_user.facebook_uid.to_i > 0
+
+      if defined?(THIRD_PARTY_CONFIGURATION) && !(THIRD_PARTY_CONFIGURATION[:enabled] || []).include?(:facebook)
+        fb_enabled = false if fb_enabled
+      end
 
       if fb_enabled
         session[FacebookConnectHelper::FACEBOOK_CONNECT_SESSION_ID] = nil
