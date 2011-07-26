@@ -16,6 +16,7 @@ class SessionsController < ApplicationController
         store_location(params[:redirect_to])
       else
         redirect_to params[:redirect_to]
+        return
       end
     end
 
