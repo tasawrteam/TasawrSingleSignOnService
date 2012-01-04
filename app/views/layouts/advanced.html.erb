@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title><%= @defined_site_title ? "Tasawr SSO &raquo; #{@defined_site_title.humanize.capitalize}" : sso_site_field(:site_title, 'Tasawr Single Sign On Platform') %></title>
+
+  <%= javascript_include_tag 'jquery', 'jquery-ui' %>
+  <%= stylesheet_link_tag 'style.css' %>
+
+
+  <% if I18n.locale.to_s == 'ar' %>
+      <%= stylesheet_link_tag 'style_rtl.css' %>
+  <% else %>
+      <%= stylesheet_link_tag 'style_ltr.css' %>
+  <% end %>
+</head>
+
+<body>
+<div class="wrapper">
+  <div class="header">
+    <a href="#" class="logo">
+      <img src="/images/logo.png" alt=""/>
+    </a>
+  </div>
+
+  <div class="content">
+    <div class="topbar"></div>
+    <div class="midbar">
+      <div class="midContent">
+        <div id="slide_container">
+          <div id="slide_inner">
+
+            <div class="slide_row">
+              <div class="slide_img">
+                <img src="/images/collab_slide.jpg" alt=""/>
+              </div>
+              <div class="slide_desc">
+                <h1>Tasawr Collab</h1>
+
+                <p>Tasawr HRM is a community portal catering to internet users
+                  throughout the Middle East. Register now to be part of this
+                  vibrant community.</p>
+                <a href="<%= COLLAB_URL %>" class="connect_btn">Connect Now</a>
+              </div>
+            </div>
+            <div class="slide_row">
+              <div class="slide_img">
+                <img src="/images/hrm_slide.jpg" alt=""/>
+              </div>
+              <div class="slide_desc">
+                <h1>Tasawr HRM</h1>
+
+                <p>Tasawr HRM is a community portal catering to internet users
+                  throughout the Middle East. Register now to be part of this
+                  vibrant community.</p>
+                <a href="<%= HRM_URL %>" class="connect_btn">Connect Now</a>
+              </div>
+            </div>
+
+            <div class="slide_row">
+              <div class="slide_img">
+                <img src="/images/wiki_slide.jpg" alt=""/>
+              </div>
+              <div class="slide_desc">
+                <h1>Tasawr Wiki</h1>
+
+                <p>Tasawr HRM is a community portal catering to internet users
+                  throughout the Middle East. Register now to be part of this
+                  vibrant community.</p>
+                <a href="<%= WIKI_URL %>" class="connect_btn">Connect Now</a>
+              </div>
+            </div>
+
+            <div class="slide_row">
+              <div class="slide_img">
+                <img src="/images/support_slide.jpg" alt=""/>
+              </div>
+              <div class="slide_desc">
+                <h1>Tasawr Support</h1>
+
+                <p>Tasawr HRM is a community portal catering to internet users
+                  throughout the Middle East. Register now to be part of this
+                  vibrant community.</p>
+                <a href="<%= SUPPORT_URL %>" class="connect_btn">Connect Now</a>
+              </div>
+            </div>
+            <div class="slide_row">
+              <div class="slide_img">
+                <img src="/images/issueTracker_slide.jpg" alt=""/>
+              </div>
+              <div class="slide_desc">
+                <h1>Tasawr Issue Tracker</h1>
+
+                <p>Tasawr HRM is a community portal catering to internet users
+                  throughout the Middle East. Register now to be part of this
+                  vibrant community.</p>
+                <a href="<%= ISSUE_URL %>" class="connect_btn">Connect Now</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="service_bar">
+          <ul>
+            <li>
+              <a href="#collab" class="slide-event select_hov" id="collab_1">
+                <img src="/images/collab.png" alt=""/>
+              </a>
+            </li>
+            <li>
+              <a href="#hrm" class="slide-event" id="hrm_2">
+                <img src="/images/hrm.png" alt=""/>
+              </a>
+            </li>
+            <li>
+              <a href="#wiki" class="slide-event" id="wiki_3">
+                <img src="images/wiki.png" alt=""/>
+              </a>
+            </li>
+            <li>
+              <a href="#support" class="slide-event" id="support_4">
+                <img src="/images/support.png" alt=""/>
+              </a>
+            </li>
+            <li>
+              <a href="#issue" class="slide-event" id="issue_5">
+                <img src="/images/issueTracker.png" alt=""/>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <% message = flash[:notice] || flash[:error] || flash[:success] %>
+        <% if message %>
+            <div class='notice'>
+              <%= message %>
+            </div>
+        <% end %>
+        <%= yield %>
+
+      </div>
+    </div>
+    <div class="footbar">
+      <div class="copyright">
+        &copy; 2010 Tasawr Interactive. All Rights Reserved.
+      </div>
+      <div class="tasawr">
+        <a href="http://tasawr.com" class="footer_logo" target="_blank"><img src="images/footer_logo.png" alt=""/></a>
+
+        <div class="tasawr_txt">www.tasawr.com</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        var currentPosition = 0;
+        var slideWidth = 920;
+        var slides = $('.slide_row');
+        var numberOfSlides = slides.length;
+
+        // Remove scrollbar in JS
+        $('#slide_container').css('overflow', 'hidden');
+
+        // Wrap all .slides with #slideInner div
+        slides
+                .wrapAll('<div id="slide_inner"></div>')
+            // Float left to display horizontally, readjust .slides width
+                .css({
+                         'float' : 'left',
+                         'width' : slideWidth
+                     });
+
+        // Set #slideInner width equal to total width of all slides
+        $('#slide_inner').css('width', slideWidth * (numberOfSlides + 1));
+
+
+        // Create event listeners for .controls clicks
+        $('a.slide-event')
+                .bind('click', function() {
+
+            $('a.slide-event').removeClass('select_hov');
+            $(this).addClass('select_hov');
+            var strArray = $(this).attr('id').split('_');
+            currentPosition = strArray[1] - 1;
+
+            $('#slide_inner').animate({
+                'marginLeft' : slideWidth * (-currentPosition)
+            });
+        });
+
+    });
+</script>
+</body>
+</html>

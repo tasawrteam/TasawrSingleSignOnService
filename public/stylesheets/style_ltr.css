@@ -1,94 +1,29 @@
-body { text-align: left }
+.header, a.logo, .content, .topbar, .midbar , .footbar, .midContent, .slide_row, .slide_img, .slide_desc, .slide_desc p , a.connect_btn, .service_bar, .service_bar ul, .service_bar ul li, .service_bar ul li a, .service_bar ul li a:hover, .sign_in_row, .sign_in, .sign_txt_row, .sign_txt_row .signTxt, .sign_txt_row .signTxt label, .sign_txt_row .signTxt input, input.go, a.forgot_pwd, .copyright, .sign_out , .message, .sign_out_link, .forgot_pass, .forgot_txt_row, .forgot_txt, .forgot_txt label, .forgot_txt input   {float:left;  }
 
-input {direction:ltr }
+.midContent {margin-left:4px }
 
-.header, .header .add, .header .logo, .topMenu, .menusWrapper ul li, .menusWrapper, .menusWrapper ul, .imagine, .wideColumn, .narrowColumn, .smallBox, .singInRow  { float: left; }
+.slide_row {margin:20px }
 
-.header .logo { padding-left: 5px; }
+.service_bar ul li, .service_bar ul li a { background:url(../images/divider.jpg) right no-repeat }
 
-.header .add { margin: 16px 0px 0px 0px }
+.service_bar ul li a:hover, .service_bar ul li a.select_hov { background:url(../images/hober.png) no-repeat;   }
 
-.wideColumn {margin-left:18px }
+.sign_in { background:url(../images/sign_in.jpg) no-repeat left; margin-left:-11px }
 
-.narrowColumn, .singInRow  {margin-left:10px }
+.sign_out { background:url(../images/sign_out.jpg) no-repeat left; margin-left:-11px }
 
-.smBoxTop,
-.smBoxBot,
-.smBoxMid { float:left }
+.sign_txt_row {margin-left:65px }
 
-/*same*/
-.titleBgLeft,
-.titleBgMid,
-.titleBgRight,
-.n_smboxmid { float:left }
+.sign_txt_row .signTxt {margin-right:15px }
 
-.titleBgMid h1, h2 {float:left; text-align:left }
+a.forgot_pwd {margin-left:35px }
 
-/**/
+.tasawr, .tasawr_txt, a.footer_logo {float:right; text-align:right }
 
-.textRow, 
-.textRow label, 
-.textRow2 label, 
-.textRow span, 
-.textRow2 span, 
-.textRow input, 
-.gobutton input, 
-.letbutton input, 
-.textRow2 input, .textRow2 p, .wideColumn p, .ch_top     { float:left }
+.tasawr_txt {border-right:1px solid #c9d3d9; padding-right:10px; margin-right:10px }
 
-.textRow label, .textRow2 label { text-align:right} 
+.forgot_pass { background:url(../images/forgot_pass.jpg) no-repeat; margin-left:-11px }
 
-.textRow span, .textRow2 span { text-align:left; }
+.forgot_txt_row {margin-left:48px }
 
-.gobutton .goBtn, .letbutton .letBtn {float:right }
-
-.subcrive p, .subcrive2 p {float:left; text-align:left }
-
-/**/
-.site_privacy ul li {  border-right:1px solid #98a7b0}
-
-.site_privacy ul li a { float: left }
-
-.footer, .content, .footerLinks, .footerLinks .part1, .footerLinks .part2 , .footerLinks .part3 , .footerLinks .partTasa, .siteRow, .site_copy { float: left; }
-
-.site_privacy  {float:right }
-
-.site_privacy ul, .site_privacy ul li, .copyRights, .copyRights img , .tasawr, .copyRights a { float:right }
-
-.copyRights a {border-left:1px solid #98a7b0 }
-
-.tasawr {text-align:right}
-
-.image_avater {float: left; margin-left:90px; *margin-left:50px }
-
-/**/
-.topTab, .topTab ul, .topTab ul li , .topTab ul li a, .topTab ul li a span, .wide_left_side, .narrow_right_side, .midCont, .smallBox_wide, .smBoxMid_wide, .n_smboxmid_wide, .smBoxBot_wide, .bbc_sports, .likeDesc, .like, .likeRow, .likeDesc p, .likeDesc span, .techCrunch, .techInner, .techRow, .tc, .tcDesc, .crunchTxt, .people, .techRow p, .mtop, .ad, .mleft10, .media_img, .mainwrap  {float:left }
-
-.topTab ul, .narrow_right_side, .tcDesc, .mleft10, .advertise_side, .com_brief_desc {margin-left:10px }
-
-.header, .header .add, .header .logo, .topMenu, .menusWrapper ul li, .menusWrapper, .menusWrapper ul, .imagine, .wideColumn, .narrowColumn, .smallBox, .singInRow  { float: left; }
-
-.header .logo { padding-left: 5px; }
-
-.header .add { margin: 10px 0px 0px 0px }
-
-.topMenu ul li.switch_lan { float: right }
-
-.menusWrapper ul li a { padding: 9px 20px 8px 6px; }
-
-.menusWrapper ul li.switch_lan a { padding-right: 10px }
-
-/*09 nov*/
-
-.travel, .hotel, .secondRow, .car_rental, .thirdRow, .news_logo, .relestate   { float:left }
-
-.hotel {margin-left:70px }
-
-.car_rental {margin-left:35px }
-
-.news_logo {margin-left:0px }
-
-.relestate {margin-left:182px }
-
-
-.copyRights div.tasawr a {border-right:none; margin-top:-10px; border-left: 0;}
+.footbar { background:url(../images/footer_bg.png) no-repeat; }

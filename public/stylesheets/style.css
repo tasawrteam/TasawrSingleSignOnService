@@ -1,241 +1,108 @@
-* {
-	margin: 0;
-	padding: 0;
-}
+/* 
+Tasawr Interactive
+CSS Author: Mosaddek Hossain
+*/
 
-.f_ltr { float: left }
+* {margin:0; padding:0 }
 
-.f_rtl { float: right }
+body {background:#e5ecf0 ; font-family:Arial, Myriad Pro, Helvetica, sans-serif; font-size:14px; color:#7b7a7b; }
 
-.a_ltr { text-align: left }
+.b { border: 1px solid }
 
-.a_rtl { text-align: right }
+a { outline: none; text-decoration: none; cursor: pointer; color:#7b7a7b }
 
-.b { border: 1px solid #f00 }
+a:hover { text-decoration: none }
 
-.clear {clear:both }
-
-body {
-	font-family: 'Tahoma', 'Myriad Pro', 'Arial';
-	font-size: 11px;
-	background: #dae3e8;
-	color: #353535;
-}
-
-a { text-decoration: none; color: #475c69; outline: none }
-
-a:hover { text-decoration: underline }
-
-a img { border: none }
+a img { border: none; padding:0; margin:0}
 
 ul li { list-style: none }
 
+.wrapper {width:988px; margin:0 auto }
 
-.wrapper {
-	width: 980px;
-	margin:  0 auto;
-}
+/*Header section*/
 
+.header { width:988px; height:125px; }
 
-.header {
-	width: 980px;
-	/*margin-top: 31px;*/
-	margin-bottom: 16px;
-}
+a.logo {width:208px; height:50px; margin-top:45px }
 
-.header .add { width: 716px; }
+.content {width:988px; }
 
-.header .logo, .header .add { display: inline }
 
-.header .logo { width: 222px; margin-top: 30px; }
+/*Middle section*/
 
-.imagine { width:980px; background:url(/images/big_box.png) no-repeat; /**background:url(/images/big_box.gif) no-repeat;*/ height:490px; padding-top:18px  }
+.topbar {width:988px; background:url(../images/top_bar.png) bottom no-repeat; height:8px }
 
-.wideColumn { width:610px; display:inline }
+.midbar {width:988px; background:url(../images/middle_bg.png) repeat-y; }
 
-.narrowColumn { display: inline; width: 326px;  }
+.midContent {width:980px; }
 
-.narrowColumn .titleBgMid { width:306px; height:30px; background: url(/images/title_bg_mid.png) repeat-x; /**background: url(/images/title_bg_mid.gif) repeat-x;*/  }
+.slide_row {width:920px; margin-top:25px; }
 
-.smallBox { width:326px; /*background:url(/images/white_small_mid_bg.png) repeat-y*/   }
+.slide_img {width:400px }
 
-.n_smboxmid { width:326px; background:url(/images/white_small_mid_bg.png) repeat-y; /**background:url(/images/white_small_mid_bg.gif) repeat-y;*/   }
+.slide_desc {padding-top:40px }
 
-/**/
-.smBoxTop { float:left; width:100% }
+.slide_desc, .slide_desc p {width:520px }
 
-.smBoxBot { width:326px; height:8px; display:inline; background: url(/images/white_small_bot_bg.png) top no-repeat; /** background: url(/images/white_small_bot_bg.gif) top no-repeat;*/ }
+.slide_desc h1 { color:#49545a; font-weight: normal; font-size:36px; font-family: Myriad Pro }
 
-.titleBgLeft { width:10px; height:30px; background: url(/images/title_bg_left.png) left no-repeat; /**background: url(/images/title_bg_left.gif) left no-repeat;*/ }
+.slide_desc p {margin-top:15px; font-size:16px; font-family:Myriad Pro;  min-height: 85px; }
 
-.titleBgRight { width:10px; height:30px; background: url(/images/title_bg_right.png) left no-repeat; /**background: url(/images/title_bg_right.gif) left no-repeat; */ }
+a.connect_btn {background:url(../images/connect_now_btn.png) no-repeat; width:158px; height:56px; line-height:56px; font-size:18px; font-family: Myriad Pro; color:#d4dde4; text-align:center;  }
 
-.smBoxMid {width:326px; display:inline   }
+.service_bar {width:980px; background:url(../images/service_bar.jpg) repeat-x; height:130px; margin-top:10px }
 
-.mtop {margin-top:10px; display:inline }
+.service_bar ul {width:980px }
 
-.titleBgMid h1 {font-family:Arial, Helvetica, sans-serif; font-size:15px; color:#475c69; padding-top:8px }
+.service_bar ul li, .service_bar ul li a {width:196px; line-height:130px; height:130px; /*margin-top:9px;*/ text-align:center }
 
-h2 {font-family:'Tahoma'; font-size:14px; font-weight:bold; color:#000; padding-top:5px }
+.service_bar ul li a:hover, .service_bar ul li a.select_hov {width:196px; height:130px; line-height:130px;   }
 
-.singInRow {width:306px; margin-top:10px; display:inline }
+.service_bar ul li a img {padding-top:50px }
 
-/**/
+.sign_in_row {width:980px; margin-top:15px; }
 
-.textRow {width:306px; margin-bottom:6px; display:inline }
+.sign_in, .sign_out {width:230px; height:121px; }
 
-.textRow label, .textRow2 label { width:95px; padding-top:4px } 
+.sign_txt_row {width:685px; margin-top:10px }
 
-.textRow span, .textRow2 span { width:10px; padding-top:4px } 
+.sign_txt_row .signTxt, .sign_txt_row .signTxt label, .sign_txt_row .signTxt input {width:213px; }
 
-.textRow input { width:170px; padding:3px 5px; background:url(/images/inputBg.jpg) no-repeat; height:14px; border:none; font-size:11px; } 
+.sign_txt_row .signTxt label {color:#49545a; font-size:14px; line-height:30px; }
 
-.textRow2 input { width:20px; margin-top:5px; display:inline } 
+.sign_txt_row .signTxt input {background:url(../images/txt_bg.png) no-repeat; height:32px; line-height:32px; border:none }
 
-.textRow2 p {width:45px; padding-top:5px; display:inline }
+input.go {width:63px; height:32px; background:url(../images/go_btn.png) no-repeat; color:#FFFFFF; font-size:14px; line-height:32px; text-align:center; border:none; cursor:pointer; margin-top:30px; font-weight:bold; padding-bottom:3px; }
 
-.gobutton .goBtn  { background:url(/images/go_btn.jpg) no-repeat; width:43px; height:23px; border:none; color:#FFFFFF; cursor:pointer; outline:none; font-family:'Tahoma'; font-size:12px; font-weight:bold; text-align:center; padding-bottom:5px; }
+a.forgot_pwd { color:#49545a; font-size:14px; margin-top:40px }
 
-.letbutton .letBtn  { background:url(/images/letmein_btn.jpg) no-repeat; width:101px; height:23px; border:none; color:#FFFFFF; cursor:pointer; outline:none; font-family:'Tahoma'; font-size:12px; font-weight:bold; text-align:center; padding-bottom:5px; margin-top:10px  }
+.copyright {width:400px; margin-top:65px; color:#7b8e99; font-size:12px }
 
-.subcrive p {width:180px;  }
-.subcrive2 p {width:450px}
+.tasawr {width:400px; margin-top:30px }
 
+.tasawr_txt {width:215px; height:30px; padding-top:20px; margin-top:20px; color:#7B8E99; font-size:12px}
 
-h1 {font-size:20px; font-family:Arial, Helvetica, sans-serif; font-weight:bold; color:#49545a }
+a.footer_logo {width:131px; height:28px; margin-top:32px }
 
-.wideColumn p { width:100%; margin-top:10px; display: inline }
+.message {width:590px; font-size:18px; color:#49545a; margin-top:40px; text-align:center; font-weight:normal; }
 
-/**/
+.sign_out_link {width:90px; text-align:center ; margin-top:45px;}
 
-.footer, .content { width: 980px; margin-top:10px; display:inline; }
+.sign_out_link a {color:#49545a; font-size:14px;  text-decoration:underline; text-align:center  }
 
-.footer { padding-bottom: 50px; color:#586f7c }
+.forgot_pass {width:350px; height:121px; }
 
-.footerLinks, .footerLinks a { color: #586f7c }
+.forgot_txt_row {width:500px; margin-top:10px }
 
-.footerLinks h4 { font-size: 14px; color: #49545a; font-weight: bold }
+.forgot_txt {width:335px }
 
-.footerLinks .part1 { width: 135px; }
+.forgot_txt label, .forgot_txt input {width:323px;  }
 
-.footerLinks .partTasa { width: 615px; color:#000 }
+.forgot_txt label {color:#49545a; font-size:14px; line-height:30px; }
 
-.footerLinks .part1 a { width: 135px; margin-top: 5px; }
+.forgot_txt input { background:url(../images/forgot_txt.jpg) no-repeat; height:32px; border:none }
 
-.copyRights { width:980px}
+/*Footer section*/
 
-.copyRights a { width: 131px; height: 28px; padding:10px /*margin-top:25px*/ }
+.footbar {width:988px; height:211px; }
 
-.tasawr { width:250px; margin-top:20px; padding:10px; font-size:12px}
-
-.footerLinks { width: 980px; margin-top:10px; display:inline }
-
-
-.siteRow { width:980px; border-bottom:1px solid #c9d3d9; padding-bottom:10px}
-
-.site_copy {width:400px; font-size:11px }
-
-.site_privacy, .site_privacy ul {width:548px }
-
-.site_privacy ul li {  padding:0 10px;}
-
-.footerLinks a { display: block }
-
-.ch_top {margin-top:5px; }
-
-
-.image_avater {background:url(/images/tasawr_imagine_2.png) no-repeat; /**background:url(/images/tasawr_imagine.gif) no-repeat;*/ width:376px; height:361px; margin-top:30px }
-
-
-/**/
-.topMenu { width: 972px; padding-left: 8px; background:  url(/images/menu_left.jpg) left no-repeat; height: 36px; }
-
-.menusWrapper { background: url(/images/menu_right.jpg) no-repeat right; padding-right: 8px; width: 964px; height: 36px; }
-
-.menusWrapper ul { background: url(/images/menu_mid.jpg) repeat-x; width: 964px; height: 36px; }
-
-.menusWrapper ul li a { float: left; font-weight: bold; font-size: 14px; color: #fff; font-family: Arial, Helvetica, sans-serif; }
-	
-.menusWrapper ul li a:hover, .menusWrapper ul li a.selMenu { text-decoration: none; color:#a8b7be }
-
-
-.topTab  {width:980px }
-
-.topTab ul {width:915px }
-
-.topTab ul li { list-style-image:none; list-style-position:outside; list-style-type:none; }
-
-.topTab ul li a {
-	background: url(/images/tab_menu_left.jpg) no-repeat left center;
-	color:#FFFFFF;
-	float:left;
-	height:28px;
-	padding-left:10px;
-	cursor:pointer
-}
-
-.topTab ul li a span {
-	background: url(/images/tab_menu_right.jpg) no-repeat right top;
-	font-size:12px;
-	font-weight: normal;
-	height:19px;
-	padding-left:5px;
-	padding-right:12px;
-	padding-top:9px;
-	color:#49545a;
-	cursor:pointer
-}
-
-.topTab ul li a:hover, .topTab ul li a.selTab {
-	background: url(/images/tab_menu_hover_left.jpg) no-repeat left center;
-	color:#FFFFFF;
-	float:left;
-	height:28px;
-	padding-left:10px;
-	text-decoration:none
-}
-
-.topTab ul li a:hover span, .topTab ul li a.selTab span {
-	background: url(/images/tab_menu_hover_right.jpg) no-repeat right top;
-	font-size:12px;
-	font-weight: normal;
-	height:19px;
-	padding-left:5px;
-	padding-right:12px;
-	padding-top:9px;
-	color:#fff;
-	text-decoration:none	
-}
-
-/*09 nov*/
-
-.secondRow {width:376px; margin-top:0px }
-
-.thirdRow {width:376px; margin-top:10px }
-
-.relestate {width:96px; height:96px; border:none; background:url(/images/realestate_icon.png) no-repeat; display:inline }
-
-.news_logo {width:96px; height:96px; border:none; background:url(/images/news_icon.png) no-repeat; display:inline }
-
-.hotel {width:96px; height:96px; border:none; background:url(/images/hotel_icon.png) no-repeat; display:inline }
-
-.car_rental {width:96px; height:96px; border:none; background:url(/images/car_icon.png) no-repeat; display:inline }
-
-.travel  {width:96px; height:96px; border:none; background:url(/images/news_icon.png) no-repeat; display:inline }
-
-.n_smboxmid ul {
-  padding: 5px;
-}
-
-.n_smboxmid ul li {
-  padding: 5px;
-}
-
-/* My mod */
-.translations {
-  margin-left: 20px;
-}
-
-.translations textarea {
-  width: 100%;
-}

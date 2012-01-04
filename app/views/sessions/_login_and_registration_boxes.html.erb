@@ -1,121 +1,39 @@
-<div class="smallBox">
-  <% if @login_sub_view.nil? %>
-    <div class="smBoxTop">
-      <div class="titleBgLeft"></div>
-      <div class="titleBgMid">
-        <h1><%= t('heading.SIGNIN')%></h1>
+<div class="sign_in_row">
+  <div class="sign_in"></div>
+  <% form_tag session_path do -%>
+      <div class="sign_txt_row">
+        <div class="signTxt">
+          <label><%= t('form.EmailID') %></label>
+          <%= text_field_tag 'email', @email %>
+        </div>
+        <div class="signTxt">
+          <label><%= t('form.Password') %></label>
+          <%= password_field_tag 'password', nil %>
+        </div>
+        <input name="" type="submit" class="go" value="GO!"/>
+        <a href="#forgetPassword" class="toggle-class">Forget Password</a>
       </div>
-      <div class="titleBgRight"></div>
-    </div>
-
-    <div class="smBoxMid">
-      <div class="n_smboxmid">
-        <% form_tag session_path do -%>
-          <div class="singInRow">
-            <div style='text-align: center; display: none;'>
-              <div style="margin-left: 35px;;text-align: center; margin-bottom: 20px;float:left;">
-                <fb:login-button perms="email,publish_stream,create_event,rsvp_event"
-                                 length='short' size='small'
-                                 onlogin='window.location.reload()'/>
-              </div>
-
-              <div style="float:left; margin-left: 20px;">
-                <%= link_to image_tag('http://a0.twimg.com/images/dev/buttons/sign-in-with-twitter-d-sm.png'), connect_twitter_session_path %>
-              </div>
-            </div>
-            <div class='clear'></div>
-
-            <div class="textRow">
-              <label><%= t('form.EmailID')%></label>
-              <span>:</span>
-              <%= text_field_tag 'email', @email %>
-            </div>
-            <div class="textRow">
-              <label><%= t('form.Password')%></label>
-              <span>:</span>
-              <%= password_field_tag 'password', nil %>
-            </div>
-            <div class="gobutton textRow">
-              <label><%= link_to t('form.ForgotPassword'), forgot_password_url %></label>
-              <input class="goBtn" name="" type="submit" value="<%= t('form.go')%>"/>
-            </div>
-          </div>
-        <% end %>
-      </div>
-      <div class="smBoxBot"></div>
-    </div>
-  <% else %>
-    <%= render :partial => 'users/' + @login_sub_view.to_s %>
   <% end %>
 </div>
 
-<div class="smallBox mtop">
-  <div class="smBoxTop">
-    <div class="titleBgLeft"></div>
-    <div class="titleBgMid">
-      <h1><%= t('heading.REGISTER')%></h1>
+<div class="sign_in_row" style="display:none;">
+  <div class="forgot_pass"></div>
+  <% form_tag reset_password_path do -%>
+  <div class="forgot_txt_row">
+    <div class="forgot_txt">
+      <label>Email ID</label>
+      <%= text_field_tag 'email', @email %>
     </div>
-    <div class="titleBgRight"></div>
+    <input class="go" name="" type="submit" value="Go!" />
   </div>
-
-  <div class="smBoxMid">
-    <div class="n_smboxmid">
-      <div class="singInRow">
-        <div id='errorMessages' title='Error messages'>
-          <%= error_messages_for :user %>
-        </div>
-        <% form_for :user, :url => users_path do |f| -%>
-          <div class="textRow">
-            <label><%= t('form.EmailID')%></label>
-            <span>:</span>
-            <%= f.text_field :email %>
-          </div>
-          <div class="textRow">
-            <label><%= t('form.Password')%></label>
-            <span>:</span>
-            <%= f.password_field :password %>
-          </div>
-          <div class="textRow">
-            <label><%= t('form.ReenterPassword')%></label>
-            <span>:</span>
-            <%= f.password_field :password_confirmation %>
-          </div>
-          <div class="textRow">
-            <label><%= t('form.Birthday')%></label>
-            <span>:</span>
-            <%= f.text_field :birthday %>
-          </div>
-          <div class="textRow">
-            <label><%= t('form.Mobile')%></label>
-            <span>:</span>
-            <%= f.text_field :mobile %>
-          </div>
-
-          <div class="textRow2">
-            <label><%= t('form.Gender')%></label>
-            <span>:</span>
-            <%= f.radio_button :gender, 'male' %>
-
-            <p><%= t('form.Male')%></p>
-            <%= f.radio_button :gender, 'female' %>
-
-            <p><%= t('form.Female')%></p>
-          </div>
-
-          <div class="textRow2 clear ">
-            <label><%= t('form.Agreement')%></label>
-            <span>:</span>
-            <%= f.check_box :terms_and_conditions %>
-
-            <div class="ch_top"><%= t('form.iAgree', :link => link_to(t('nav.TermsConditions'), static_page_url(:name => 'terms_and_conditions'))) %></div>
-          </div>
-
-          <div class="letbutton">
-            <input class="letBtn" name="" type="submit" value="<%= t('form.LetMeIn')%>"/>
-          </div>
-        <% end %>
-      </div>
-    </div>
-    <div class="smBoxBot"></div>
-  </div>
+  <% end %>
+  <a href="#sign-in" class="toggle-class">Sign In</a>
 </div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+        $(".toggle-class").click(function(){
+           $("div.sign_in_row").slideToggle("fast");
+        });
+  });
+</script>

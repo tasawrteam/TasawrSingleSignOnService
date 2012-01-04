@@ -24,3 +24,9 @@ if defined?(ActionController)
     :domain      => '.servicedev1.net'
   }
 end
+
+HRM_URL = 'http://hrm.tasawr.com'
+WIKI_URL = 'http://wiki.tasawr.com'
+ISSUE_URL = 'http://issues.tasawr.com'
+COLLAB_URL = 'http://collab.tasawr.com'
+SUPPORT_URL = 'http://support.tasawr.com'

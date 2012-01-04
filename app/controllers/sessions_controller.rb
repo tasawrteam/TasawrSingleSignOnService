@@ -3,7 +3,6 @@ class SessionsController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
   include AuthenticatedSystem
 
-  layout 'basic'
   #before_filter :check_facebook_connect_session, :only => [:new]
   #before_filter :check_twitter_connect_session, :only => [:connect_twitter, :oauth_twitter]
 

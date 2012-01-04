@@ -2,7 +2,6 @@ class SsoSitesController < ApplicationController
   
   before_filter :login_required
   before_filter :authorize
-  layout 'basic'
   
   def index
     @sso_sites = SsoSite.all

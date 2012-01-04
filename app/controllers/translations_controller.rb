@@ -1,7 +1,6 @@
 class TranslationsController < ApplicationController
 
   include AuthenticatedSystem
-  layout 'basic'
 
   before_filter :login_required
   before_filter :authorize, :except => []

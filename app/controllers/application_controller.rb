@@ -21,12 +21,21 @@ class ApplicationController < ActionController::Base
   before_filter :detect_locale
   before_filter :detect_test_site
 
+  layout :choose_layout
+
+
   def default_url_options(options = {})
     options = (options || {})
     if !options.keys.include?(:l)
       options[:l] = I18n.locale.to_s
     end
     options
+  end
+
+  private
+
+  def choose_layout
+    'advanced'
   end
   
 end
