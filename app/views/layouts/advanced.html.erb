@@ -131,6 +131,7 @@
         </div>
         <% message = flash[:notice] || flash[:error] || flash[:success] %>
         <% if message %>
+            <p>&nbsp;</p>
             <div class='notice'>
               <%= message %>
             </div>

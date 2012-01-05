@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100906101210) do
+ActiveRecord::Schema.define(:version => 20101025053347) do
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false
@@ -20,6 +20,18 @@ ActiveRecord::Schema.define(:version => 20100906101210) do
 
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
+
+  create_table "sso_sites", :force => true do |t|
+    t.string   "domain"
+    t.string   "title"
+    t.string   "logo_url"
+    t.text     "theme_css"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "content_map"
+    t.boolean  "default",       :default => false
+    t.string   "template_suit"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name",                      :limit => 100, :default => ""
@@ -35,8 +47,17 @@ ActiveRecord::Schema.define(:version => 20100906101210) do
     t.datetime "remember_token_expires_at"
     t.string   "activation_code",           :limit => 40
     t.datetime "activated_at"
+    t.integer  "facebook_uid",              :limit => 8
+    t.string   "facebook_sid"
+    t.boolean  "facebook_connect_enabled",                 :default => true
+    t.integer  "twitter_uid",               :limit => 8
+    t.boolean  "twitter_connect_enabled"
+    t.string   "reset_password_code"
+    t.boolean  "admin"
+    t.integer  "sso_site_id"
   end
 
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["email"], :name => "index_users_on_email"
+  add_index "users", ["facebook_uid"], :name => "index_users_on_facebook_uid"
 
 end
