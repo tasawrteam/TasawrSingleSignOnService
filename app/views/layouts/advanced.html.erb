@@ -141,7 +141,7 @@
     </div>
     <div class="footbar">
       <div class="copyright">
-        &copy; 2010 Tasawr Interactive. All Rights Reserved.
+        &copy; <%= Time.new.year %> Tasawr Interactive. All Rights Reserved.
       </div>
       <div class="tasawr">
         <a href="http://tasawr.com" class="footer_logo" target="_blank"><img src="images/footer_logo.png" alt=""/></a>
@@ -185,7 +185,7 @@
             currentPosition = strArray[1] - 1;
 
             $('#slide_inner').animate({
-                'marginLeft' : slideWidth * (-currentPosition)
+                'marginLeft' : (slideWidth + 40) * (-currentPosition)
             });
         });
 

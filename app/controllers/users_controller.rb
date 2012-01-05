@@ -103,6 +103,7 @@ class UsersController < ApplicationController
         reset_code = "#{Time.now.to_i}#{rand(1000)}"
         if user.update_attribute(:reset_password_code, reset_code)
           flash[:success] = 'Please check your email address, we have just sent password reset link.'
+          session[:show_forget_form] = nil
           redirect_to root_url
           return
         else
@@ -115,7 +116,7 @@ class UsersController < ApplicationController
     else
       flash[:notice] = 'Please enter your email address.'
     end
-
+    session[:show_forget_form] = true
     redirect_to :back
   end
 

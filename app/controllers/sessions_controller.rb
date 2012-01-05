@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
 
   # render new.rhtml
   def new
+
     @user = User.new
 
     if params[:redirect_to]

@@ -1,4 +1,4 @@
-<div class="sign_in_row">
+<div class="sign_in_row" style="<%= session[:show_forget_form].present? ? 'display:none;' : 'display:block;' %>">
   <div class="sign_in"></div>
   <% form_tag session_path do -%>
       <div class="sign_txt_row">
@@ -11,12 +11,12 @@
           <%= password_field_tag 'password', nil %>
         </div>
         <input name="" type="submit" class="go" value="GO!"/>
-        <a href="#forgetPassword" class="toggle-class">Forget Password</a>
+        <a href="#forgetPassword" class="toggle-class forgot_pwd">Forget Password ?</a>
       </div>
   <% end %>
 </div>
 
-<div class="sign_in_row" style="display:none;">
+<div class="sign_in_row" style="<%= session[:show_forget_form].present? ? 'display:block;' : 'display:none;' %>">
   <div class="forgot_pass"></div>
   <% form_tag reset_password_path do -%>
   <div class="forgot_txt_row">
@@ -27,7 +27,9 @@
     <input class="go" name="" type="submit" value="Go!" />
   </div>
   <% end %>
-  <a href="#sign-in" class="toggle-class">Sign In</a>
+  <div class="sign_out_link">
+    <a href="#sign-in" class="toggle-class">Sign In</a>
+  </div>
 </div>
 
 <script type="text/javascript">
