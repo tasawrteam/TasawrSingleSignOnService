@@ -26,7 +26,7 @@ if defined?(ActionController)
 end
 
 HRM_URL = 'http://hrm.tasawr.com'
-WIKI_URL = 'http://wiki.tasawr.com'
+WIKI_URL = 'http://wiki.tasawr.com/home?do=login'
 ISSUE_URL = 'http://issues.tasawr.com'
 COLLAB_URL = 'http://collab.tasawr.com'
-SUPPORT_URL = 'http://support.tasawr.com'
+SUPPORT_URL = 'http://support.tasawr.com/scp'
