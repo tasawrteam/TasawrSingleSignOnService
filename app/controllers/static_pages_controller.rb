@@ -6,9 +6,9 @@ class StaticPagesController < ApplicationController
     
     if File.exist?(page)
       if params[:debug].nil?
-        render :template => page, :layout => 'basic'
+        render :template => page, :layout => 'advanced'
       else
-        render :text => File.read(page), :layout => 'basic'
+        render :text => File.read(page), :layout => 'advanced'
       end
     else
       flash[:notice] = 'No such page found!'
