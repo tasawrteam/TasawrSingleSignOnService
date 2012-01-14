@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
       end
     end
 
-    ss_render_template(:try => 'index', :or => 'users/new',
+    ss_render_template(:try => 'index', :or => 'sessions/new',
                        :assigns => {:user => @user,
                                     :sso_site => @sso_selected_site})
   end
@@ -44,7 +44,7 @@ class SessionsController < ApplicationController
       @remember_me = params[:remember_me]
       @user = User.new
 
-      ss_render_template(:try => 'index', :or => 'users/new',
+      ss_render_template(:try => 'index', :or => 'sessions/new',
                        :assigns => {:user => @user,
                                     :sso_site => @sso_selected_site})
     end

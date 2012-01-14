@@ -63,7 +63,7 @@ ar:
     Male: "ذكر"
     Female: "أنثى"
     Agreement: "الموافقة"
-    iAgree: "<span style='width: auto!important; float: left;'>{{link}}</span> <span style='width: auto!important; '>أوافق على</span>"
+    iAgree: "<span style='width: auto!important; float: left;'>%{link}</span> <span style='width: auto!important; '>أوافق على</span>"
     LetMeIn: "التصريح بالدخول"
     ForgotPassword: "هل نسيت كلمة السر؟"
   home:

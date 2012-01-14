@@ -1,12 +1,12 @@
 <% if !logged_in? %>
-    <%= render :partial => 'sessions/login_and_registration_boxes' %>
+    <%= render :partial => 'users/registration_boxes' %>
 <% else %>
     <%= render :partial => 'sessions/signout_box' %>
 <% end %>
 
 <script type="text/javascript">
     <% if !@user.errors.empty? %>
-    $('#errorMessages').dialog({modal: true});
+    //$('#errorMessages').dialog({modal: true});
     <% end %>
 </script>
 
