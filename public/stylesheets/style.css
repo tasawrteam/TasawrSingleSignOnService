@@ -125,4 +125,23 @@ div.notice {
 
 .textRow2 p {width:45px; padding-top:5px; display:inline }
 
+.register-fields {
+    width: 90%;
+    padding: 5px 5%;
 
+}
+
+.register-fields .textRow {
+    width: 100%;
+}
+.register-fields,
+.register-fields .textRow,
+.register-fields .textRow label,
+.register-fields .textRow span,
+.register-fields .textRow input{
+    float: left;
+}
+
+.register-fields .textRow labe {
+    width: 30%;
+}
