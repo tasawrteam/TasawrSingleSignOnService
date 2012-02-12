@@ -112,3 +112,17 @@ div.notice {
 
 }
 
+.singInRow {width:306px; margin-top:10px; display:inline }
+.textRow {width:306px; margin-bottom:6px; display:inline }
+
+.textRow label, .textRow2 label { width:95px; padding-top:4px }
+
+.textRow span, .textRow2 span { width:10px; padding-top:4px }
+
+.textRow input { width:170px; padding:3px 5px; background:url(/images/inputBg.jpg) no-repeat; height:14px; border:none; font-size:11px; }
+
+.textRow2 input { width:20px; margin-top:5px; display:inline }
+
+.textRow2 p {width:45px; padding-top:5px; display:inline }
+
+
